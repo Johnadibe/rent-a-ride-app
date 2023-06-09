@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { BiRightArrow, BiLeftArrow } from 'react-icons/bi';
 import React, { useState } from 'react';
 
 const Home = () => {
@@ -93,8 +95,8 @@ const Home = () => {
   return (
     <section className="h-screen flex flex-col justify-evenly">
       <div className="flex flex-col align-middle">
-        <h2 className="text-2xl">LATEST PLACE</h2>
-        <h5 className="text-xl">Please Select where you want to visit</h5>
+        <h2 className="text-2xl font-extrabold">LATEST PLACE</h2>
+        <h5 className="text-xl text-bGrey">Please Select where you want to visit</h5>
       </div>
       <div className="Home">
         {currentPage > 1 && (
@@ -102,14 +104,14 @@ const Home = () => {
             type="button"
             onClick={handlePrev}
             disabled={currentPage === 1}
-            className="button-pre bg-bGreen hover:bg-green-600 text-white font-bold py-2 px-4"
+            className="button-pre py-2 px-4 bg-gradient-to-br from-bGreen to-stone-800 hover:bg-green-600 text-white font-bold"
           >
-            <span>{'<'}</span>
+            <span><BiLeftArrow /></span>
           </button>
         )}
         <div className="Row">
           {data.slice(startIndex, endIndex).map((item) => (
-            <div key={item.id} id={item.id} className="card-main">
+            <div key={item.id} id={item.id} className="card-main hover:w-72 hover:h-72">
               <img src={item.image} alt={item.name} />
               <div className="leading-4">
                 <h3 className="font-bold text-2xl space-y-1">{item.name}</h3>
@@ -118,7 +120,7 @@ const Home = () => {
                   {item.price}
                   $
                 </p>
-                <p className="Des text-xs font-extralight">{item.description}</p>
+                <p className="Des text-xs text-bGrey">{item.description}</p>
               </div>
             </div>
           ))}
@@ -128,9 +130,9 @@ const Home = () => {
             type="button"
             onClick={handleNext}
             disabled={currentPage === totalPages}
-            className="hover:bg-green-600 text-white font-bold py-2 px-4 bg-bGreen button-next"
+            className="hover:bg-green-600 font-bold py-2 px-4 text-bGrey bg-gradient-to-br from-green-400 to-slate-600 button-next"
           >
-            <span>{'>'}</span>
+            <span className="text-xl"><BiRightArrow /></span>
           </button>
         )}
       </div>
