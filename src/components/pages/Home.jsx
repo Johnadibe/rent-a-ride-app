@@ -43,32 +43,62 @@ const Home = () => {
             description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia sed libero facilis fuga, delectus doloribus?",
             price: 200,
             image: "https://picsum.photos/200/300"
+        },
+        {
+            id: 7,
+            name: "Tour 7",
+            description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia sed libero facilis fuga, delectus doloribus?",
+            price: 200,
+            image: "https://picsum.photos/200/300"
+        },
+        {
+            id: 8,
+            name: "Tour 8",
+            description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia sed libero facilis fuga, delectus doloribus?",
+            price: 200,
+            image: "https://picsum.photos/200/300"
+        },
+        {
+            id: 9,
+            name: "Tour 9",
+            description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia sed libero facilis fuga, delectus doloribus?",
+            price: 200,
+            image: "https://picsum.photos/200/300"
+        },
+        {
+            id: 10,
+            name: "Tour 10",
+            description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia sed libero facilis fuga, delectus doloribus?",
+            price: 200,
+            image: "https://picsum.photos/200/300"
         }
     ];
 
-    const cardsPerPage = 3; // Number of cards to display per page
-    const totalPages = Math.ceil(data.length / cardsPerPage); 
-    // Calculate the total number of pages
-    console.log(totalPages);
+    const cardsPerPage = 3;
+    const totalPages = Math.ceil(data.length / cardsPerPage);
 
-    const [currentPage, setCurrentPage] = useState(1); // State to keep track of the current page
+    const [currentPage, setCurrentPage] = useState(1);
 
-    // Calculate the start and end indexes of the cards to be displayed
     const startIndex = (currentPage - 1) * cardsPerPage;
     const endIndex = startIndex + cardsPerPage;
 
     const handleNext = () => {
         setCurrentPage((prevPage) => (prevPage < totalPages ? prevPage + 1 : prevPage));
     };
-    
+
     const handlePrev = () => {
         setCurrentPage((prevPage) => (prevPage > 1 ? prevPage - 1 : prevPage));
     };
-    
+
     return (
+        <section className='main'>
+            <h2>LATEST PLACE</h2>
+            <h5>Please Select where you want to visit</h5>
         <div className='Home'>
-            <button type='button' onClick={handlePrev} disabled={currentPage === 1}
-                className='button-next'><span>{`<`}</span></button>
+            {currentPage > 1 && (
+                <button type='button' onClick={handlePrev} disabled={currentPage === 1}
+                    className='button-pre'><span>{`<`}</span></button>
+            )}
             <div className='Row'>
                 {data.slice(startIndex, endIndex).map((item) => (
                     <div key={item.id} id={item.id} className='card'>
@@ -79,17 +109,12 @@ const Home = () => {
                     </div>
                 ))}
             </div>
-            {/* <div className='pagination'> */}
-                {/* <button type='button' >
-                    Prev
-                </button>
-                <button type='button' onClick={handleNext} >
-                    Next
-                </button> */}
-                <button type='button' onClick={handleNext} disabled={currentPage === totalPages}
-                    className='button-next'><span>{`>`}</span></button>
-            {/* </div> */}
+             {currentPage < totalPages && (
+                 <button type='button' onClick={handleNext} disabled={currentPage === totalPages}
+                     className='button-next'><span>{`>`}</span></button>
+             ) }
         </div>
+        </section>
     );
 };
 
