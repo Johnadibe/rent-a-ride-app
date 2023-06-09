@@ -1,9 +1,9 @@
 import { Outlet } from 'react-router-dom';
 import Nav from './Nav';
-import "styles/global.css"
+import 'styles/global.css';
 
 const Layout = () => (
-  < div className='layout'>
+  <div className="layout">
     <Nav />
     <Outlet />
   </div>
