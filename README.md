@@ -69,37 +69,48 @@ The backend was made with ruby on rails and can be found [here](https://github.c
 To run on your localhost clone the project to local folder
 
 
-
-
-### Setup
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ### Prerequisites
 
-In order to run this project you only need:
-
+In order to run this project you need:
+- [git](https://git-scm.com/downloads): A tool for managing source code
+- [Visual Studio Code](https://code.visualstudio.com/): A source code editor
 - Have a working and updated browser
-- Have a local version control like git install on your computer
-- Have an account and sign in on GitHub, as online/remote version control system
-- Basic knowledge in JS and React JS
+- Have a local version control like git installed on your computer
+- A copy of the link of this Repository.
+```sh
+ https://github.com/Johnadibe/tour-reservation.git
+```
+
+### Setup
+Clone this repository to your desired directory using the command: 
+
+```sh
+  cd your-folder
+  git clone https://github.com/Johnadibe/tour-reservation.git 
+```
 
 ### Install
 
-To install this project in your local machine use
+Install the required dependencies using the following command:
 
-- Clone the git repo using this command: `https://github.com/Johnadibe/tour-reservation.git`
-
+```sh
+  npm install
+```
 ### Usage
+Run the server using the following command:
 
-To run the project, execute the following command:
-
-- In visual studio code open terminal then write "npm start" after on your browser open "http://localhost:3000".
+```sh
+  npm start
+```
 ### Run tests
-
-- `npx stylelint "/*.{css,scss}"**`: To test css code
-- `npx eslint .` : To test Eslint Report
-
+Run this command to fix some CSS linters error
+```sh
+  npx stylelint "**/*.{css,scss}" --fix
+``` 
+Run this command to fix some JavaScript linters error
+```sh
+  npx eslint . --fix
+```
 ## 👥 Authors <a name="authors"></a>
 
 👤 **Chukwuemeka Ochuba**
@@ -142,7 +153,7 @@ Feel free to check the [issues page](https://github.com/Johnadibe/tour-reservati
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I would like to appreciate [Microverse](https://www.microverse.org/) for providing the resources and the platform for us to be a Professional full-stack developer, and I would specially thank   [Murat Korkmaz](https://www.behance.net/muratk) who is the original author of this [design](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign)
+We would like to appreciate [Microverse](https://www.microverse.org/) for providing the resources and the platform for us to be a Professional full-stack developer, and We would specially thank   [Murat Korkmaz](https://www.behance.net/muratk) who is the original author of this [design](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 📝 License <a name="license"></a>
