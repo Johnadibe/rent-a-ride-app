@@ -57,11 +57,10 @@ The backend was made with ruby on rails and can be found [here](https://github.c
 <p align="right">(<a href="#readme-top">back to top</a>)</p><!-- LIVE DEMO -->
 
 ## 🚀 Live Demo <a name="live-demo"></a>
-- Here is a [Live Demo Link](https://cryptost.netlify.app/)
+- It will updated when available
 
 ## Project Screenshots
 
-![Home page]()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
