@@ -61,7 +61,7 @@ The backend was made with ruby on rails and can be found [here](https://github.c
 
 ## Project Screenshots
 
-![Home page](./src/asset/screenshot.png)
+![Home page]()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -89,7 +89,7 @@ In order to run this project you only need:
 
 To install this project in your local machine use
 
-- Clone the git repo using this command: `https://github.com/Donmark2k/crypto-market.git`
+- Clone the git repo using this command: `https://github.com/Johnadibe/tour-reservation.git`
 
 ### Usage
 
@@ -124,14 +124,14 @@ To run the project, execute the following command:
 - LinkedIn: [@John Adibe](https://www.linkedin.com/in/john-adibe/)
 
 ## 🔭 Future Features <a name="future-features"></a>
-- I will add time and date below the nav bar
-- I will add footer
+- Add admin dashboard
+- Add payment portal
 
 ## 🤝 Contributing <a name="contributing"></a>
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/Donmark2k/crypto-market/issues).
+Feel free to check the [issues page](https://github.com/Johnadibe/tour-reservation/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
