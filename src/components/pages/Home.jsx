@@ -91,44 +91,48 @@ const Home = () => {
   };
 
   return (
-    <section className="main">
-      <h2>LATEST PLACE</h2>
-      <h5>Please Select where you want to visit</h5>
+    <section className="h-screen flex flex-col justify-evenly">
+      <div className="flex flex-col align-middle">
+        <h2 className="text-2xl">LATEST PLACE</h2>
+        <h5 className="text-xl">Please Select where you want to visit</h5>
+      </div>
       <div className="Home">
         {currentPage > 1 && (
-        <button
-          type="button"
-          onClick={handlePrev}
-          disabled={currentPage === 1}
-          className="button-pre"
-        >
-          <span>{'<'}</span>
-        </button>
+          <button
+            type="button"
+            onClick={handlePrev}
+            disabled={currentPage === 1}
+            className="button-pre bg-bGreen hover:bg-green-600 text-white font-bold py-2 px-4"
+          >
+            <span>{'<'}</span>
+          </button>
         )}
         <div className="Row">
           {data.slice(startIndex, endIndex).map((item) => (
-            <div key={item.id} id={item.id} className="card">
+            <div key={item.id} id={item.id} className="card-main">
               <img src={item.image} alt={item.name} />
-              <h3>{item.name}</h3>
-              <p>
-                Price:
-                {item.price}
-                $
-              </p>
-              <p className="Des">{item.description}</p>
+              <div className="leading-4">
+                <h3 className="font-bold text-2xl space-y-1">{item.name}</h3>
+                <p className=" text-base">
+                  Price:
+                  {item.price}
+                  $
+                </p>
+                <p className="Des text-xs font-extralight">{item.description}</p>
+              </div>
             </div>
           ))}
         </div>
         {currentPage < totalPages && (
-        <button
-          type="button"
-          onClick={handleNext}
-          disabled={currentPage === totalPages}
-          className="button-next"
-        >
-          <span>{'>'}</span>
-        </button>
-        ) }
+          <button
+            type="button"
+            onClick={handleNext}
+            disabled={currentPage === totalPages}
+            className="hover:bg-green-600 text-white font-bold py-2 px-4 bg-bGreen button-next"
+          >
+            <span>{'>'}</span>
+          </button>
+        )}
       </div>
     </section>
   );
