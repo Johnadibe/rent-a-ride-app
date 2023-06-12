@@ -10,16 +10,6 @@ const NavLinks = ({ toggleNavbar }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
 
-  useEffect(() => {
-    const userId = localStorage.getItem('id');
-    setIsLoggedIn(!!userId);
-  }, []);
-
-  useEffect(() => {
-    const userId = localStorage.getItem('id');
-    setIsLoggedIn(!!userId);
-  }, [localStorage.getItem('id')]);
-
   const isActive = (path) => location.pathname === path;
 
   return (
