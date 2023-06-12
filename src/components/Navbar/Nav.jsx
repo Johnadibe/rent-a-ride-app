@@ -26,14 +26,14 @@ const Nav = () => {
 
   return (
     <>
-      <nav className="hidden sm:block fixed left-0 top-0 w-56 h-screen bg-white shadow-2xl">
+      <nav className="hidden sm:block fixed left-0 top-0 w-56 h-screen bg-white shadow-2xl mr-4 pr-5">
         <div className="flex p-2">
           <h1> Navbar logo </h1>
         </div>
         <NavLinks />
         <MediaLinks />
         <p className="text-xs sm:text-sm text-gray-500 fixed bottom-6 left-10">
-          © 2023 MotoMate
+          © 2023 TourGuide
         </p>
       </nav>
       <div className="sm:hidden">
