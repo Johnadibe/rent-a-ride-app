@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
 const NavLinks = ({ toggleNavbar }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const handleLogout = () => {
     setIsLoggedIn(false);
   };
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
 
   const isActive = (path) => location.pathname === path;
 
   return (
+
     <ul className="mt-4 w-full text-lg sm:text-xl" onClick={toggleNavbar}>
       <li
         className={`pl-4 py-2 ${
@@ -60,7 +61,9 @@ const NavLinks = ({ toggleNavbar }) => {
         <li className="pl-4 py-2 hover:bg-cyan-900 hover:text-white">
           <NavLink to="/login">Login</NavLink>
         </li>
+
       )}
+
     </ul>
   );
 };

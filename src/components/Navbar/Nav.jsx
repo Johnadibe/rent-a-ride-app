@@ -44,6 +44,7 @@ const Nav = () => {
           }`}
         >
           <button
+            type="button"
             className="fixed top-0 -right-12 py-2 px-2 bg-white rounded-r-2xl shadow-xl"
             onClick={toggleNavbar}
           >
