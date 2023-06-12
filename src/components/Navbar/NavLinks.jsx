@@ -28,12 +28,12 @@ const NavLinks = ({ toggleNavbar }) => {
     <ul className="mt-4 w-full text-lg sm:text-xl" onClick={toggleNavbar}>
       <li
         className={`pl-4 py-2 ${
-          isActive('/motorcycles')
+          isActive('/')
             ? 'bg-cyan-900 text-white'
             : 'hover:bg-cyan-900 hover:text-white'
         }`}
       >
-        <NavLink to="/motorcycles">Motorcycles</NavLink>
+        <NavLink to="/">Tours</NavLink>
       </li>
       <li
         className={`pl-4 py-2 ${
@@ -46,12 +46,12 @@ const NavLinks = ({ toggleNavbar }) => {
       </li>
       <li
         className={`pl-4 py-2 ${
-          isActive('/add-motorcycle')
+          isActive('/add-tour')
             ? 'bg-cyan-900 text-white'
             : 'hover:bg-cyan-900 hover:text-white'
         }`}
       >
-        <NavLink to="/add-motorcycle">Add a Motorcycle</NavLink>
+        <NavLink to="/add-tour">Add a Tour</NavLink>
       </li>
       <li
         className={`pl-4 py-2 ${
@@ -60,11 +60,11 @@ const NavLinks = ({ toggleNavbar }) => {
             : 'hover:bg-cyan-900 hover:text-white'
         }`}
       >
-        <NavLink to="/delete-motorcycle">Delete Motorcycle</NavLink>
+        <NavLink to="/delete-tour">Delete Tour</NavLink>
       </li>
       {isLoggedIn ? (
         <li className="pl-4 py-2 hover:bg-cyan-900 hover:text-white">
-          <NavLink to="/motorcycles" onClick={handleLogout}>
+          <NavLink to="/" onClick={handleLogout}>
             Logout
           </NavLink>
         </li>
