@@ -4,8 +4,6 @@ import { NavLink, useLocation } from 'react-router-dom';
 // eslint-disable-next-line react/prop-types
 const NavLinks = ({ toggleNavbar }) => {
   const handleLogout = () => {
-    localStorage.removeItem('name');
-    localStorage.removeItem('id');
     setIsLoggedIn(false);
   };
 
@@ -37,7 +35,7 @@ const NavLinks = ({ toggleNavbar }) => {
       </li>
       <li
         className={`pl-4 py-2 ${
-          isActive('/reservations')
+          isActive('/')
             ? 'bg-cyan-900 text-white'
             : 'hover:bg-cyan-900 hover:text-white'
         }`}
@@ -55,7 +53,7 @@ const NavLinks = ({ toggleNavbar }) => {
       </li>
       <li
         className={`pl-4 py-2 ${
-          isActive('/delete-motorcycle')
+          isActive('/delete-tour')
             ? 'bg-cyan-900 text-white'
             : 'hover:bg-cyan-900 hover:text-white'
         }`}

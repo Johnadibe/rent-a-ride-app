@@ -55,7 +55,7 @@ const Nav = () => {
           <NavLinks toggleNavbar={toggleNavbar} />
           <MediaLinks />
           <p className="text-xs sm:text-sm text-gray-500 fixed bottom-6 left-10">
-            © 2023 MotoMate
+            © 2023 TourGuide
           </p>
         </nav>
       </div>
