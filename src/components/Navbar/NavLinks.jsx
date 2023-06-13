@@ -14,52 +14,52 @@ const NavLinks = ({ toggleNavbar }) => {
 
   return (
 
-    <ul className="mt-4 w-full text-lg sm:text-xl font-bold" onClick={toggleNavbar}>
+    <ul className="mt-4 w-full text-lg sm:text-lg font-bold" onClick={toggleNavbar}>
       <li
         className={`pl-4 py-2 ${
           isActive('/')
-            ? 'bg-cyan-900 text-white'
-            : 'hover:bg-green-500 hover:text-white'
+            ? 'bg-lGreen text-white'
+            : 'hover:bg-lGreen hover:text-white'
         }`}
       >
-        <NavLink to="/">Tours</NavLink>
+        <NavLink to="/">TOURS</NavLink>
       </li>
       <li
         className={`pl-4 py-2 ${
           isActive('/reservations')
-            ? 'bg-cyan-900 text-white'
-            : 'hover:bg-green-500 hover:text-white'
+            ? 'bg-lGreen text-white'
+            : 'hover:bg-lGreen hover:text-white'
         }`}
       >
-        <NavLink to="/reservations">My Reservations</NavLink>
+        <NavLink to="/reservations">MY RESERVATIONS</NavLink>
       </li>
       <li
         className={`pl-4 py-2 ${
           isActive('/add-tour')
-            ? 'bg-cyan-900 text-white'
-            : 'hover:bg-green-500 hover:text-white'
+            ? 'bg-lGreen text-white'
+            : 'hover:bg-lGreen hover:text-white'
         }`}
       >
-        <NavLink to="/add-tour">Add a Tour</NavLink>
+        <NavLink to="/add-tour">ADD A TOUR</NavLink>
       </li>
       <li
         className={`pl-4 py-2 ${
           isActive('/delete-tour')
-            ? 'bg-cyan-900 text-white'
-            : 'hover:bg-green-500 hover:text-white'
+            ? 'bg-lGreen text-white'
+            : 'hover:bg-lGreen hover:text-white'
         }`}
       >
-        <NavLink to="/delete-tour">Delete Tour</NavLink>
+        <NavLink to="/delete-tour">DELETE TOUR</NavLink>
       </li>
       {isLoggedIn ? (
-        <li className="pl-4 py-2 hover:bg-green-500 hover:text-white ">
+        <li className="pl-4 py-2 hover:bg-lGreen hover:text-white ">
           <NavLink to="/" onClick={handleLogout}>
-            Logout
+            LOGOUT
           </NavLink>
         </li>
       ) : (
-        <li className="pl-4 py-2 hover:bg-green-500 hover:text-white">
-          <NavLink to="/login">Login</NavLink>
+        <li className="pl-4 py-2 hover:bg-lGreen hover:text-white sm:text-lg">
+          <NavLink to="/login">LOGIN</NavLink>
         </li>
 
       )}
