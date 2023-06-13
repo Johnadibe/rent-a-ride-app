@@ -16,15 +16,15 @@ export const fetchReservation = createAsyncThunk(
   },
 );
 
-const greetingSlice = createSlice({
-  name: 'greeting',
+const reservationSlice = createSlice({
+  name: 'reservation',
   initialState: { data: [] },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchGreeting.fulfilled, (state, action) => {
+    builder.addCase(fetchReservation.fulfilled, (state, action) => {
       state.data = action.payload;
     });
   },
 });
 
-export default greetingSlice.reducer; // Export the reducer instead of the entire slice
+export default reservationSlice.reducer; // Export the reducer instead of the entire slice
