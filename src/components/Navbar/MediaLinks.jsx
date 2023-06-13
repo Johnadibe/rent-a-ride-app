@@ -12,7 +12,7 @@ const MediaLinks = () => (
       href="https://facebook.com"
       target="_blank"
       rel="noreferrer"
-      className="mr-3 text-xl sm:text-3xl text-cyan-900 hover:text-cyan-800"
+      className="mr-3 text-xl sm:text-2xl text-cyan-900 hover:text-cyan-800"
     >
       <FaFacebook />
     </a>
@@ -20,7 +20,7 @@ const MediaLinks = () => (
       href="https://twitter.com"
       target="_blank"
       rel="noreferrer"
-      className="mr-3 text-xl sm:text-3xl text-cyan-900 hover:text-cyan-800"
+      className="mr-3 text-xl sm:text-2xl text-cyan-900 hover:text-cyan-800"
     >
       <FaTwitter />
     </a>
@@ -28,7 +28,7 @@ const MediaLinks = () => (
       href="https://instagram.com"
       target="_blank"
       rel="noreferrer"
-      className="mr-3 text-xl sm:text-3xl text-cyan-900 hover:text-cyan-800"
+      className="mr-3 text-xl sm:text-2xl text-cyan-900 hover:text-cyan-800"
     >
       <FaInstagram />
     </a>
@@ -36,7 +36,7 @@ const MediaLinks = () => (
       href="https://pinterest.com"
       target="_blank"
       rel="noreferrer"
-      className="text-xl sm:text-3xl text-cyan-900 hover:text-cyan-800"
+      className="text-xl sm:text-2xl text-cyan-900 hover:text-cyan-800"
     >
       <FaPinterest />
     </a>

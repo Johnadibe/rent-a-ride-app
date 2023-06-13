@@ -14,21 +14,21 @@ const NavLinks = ({ toggleNavbar }) => {
 
   return (
 
-    <ul className="mt-4 w-full text-lg sm:text-xl" onClick={toggleNavbar}>
+    <ul className="mt-4 w-full text-lg sm:text-xl font-bold" onClick={toggleNavbar}>
       <li
         className={`pl-4 py-2 ${
           isActive('/')
             ? 'bg-cyan-900 text-white'
-            : 'hover:bg-cyan-900 hover:text-white'
+            : 'hover:bg-green-500 hover:text-white'
         }`}
       >
         <NavLink to="/">Tours</NavLink>
       </li>
       <li
         className={`pl-4 py-2 ${
-          isActive('/')
+          isActive('/reservations')
             ? 'bg-cyan-900 text-white'
-            : 'hover:bg-cyan-900 hover:text-white'
+            : 'hover:bg-green-500 hover:text-white'
         }`}
       >
         <NavLink to="/reservations">My Reservations</NavLink>
@@ -37,7 +37,7 @@ const NavLinks = ({ toggleNavbar }) => {
         className={`pl-4 py-2 ${
           isActive('/add-tour')
             ? 'bg-cyan-900 text-white'
-            : 'hover:bg-cyan-900 hover:text-white'
+            : 'hover:bg-green-500 hover:text-white'
         }`}
       >
         <NavLink to="/add-tour">Add a Tour</NavLink>
@@ -46,19 +46,19 @@ const NavLinks = ({ toggleNavbar }) => {
         className={`pl-4 py-2 ${
           isActive('/delete-tour')
             ? 'bg-cyan-900 text-white'
-            : 'hover:bg-cyan-900 hover:text-white'
+            : 'hover:bg-green-500 hover:text-white'
         }`}
       >
         <NavLink to="/delete-tour">Delete Tour</NavLink>
       </li>
       {isLoggedIn ? (
-        <li className="pl-4 py-2 hover:bg-cyan-900 hover:text-white">
+        <li className="pl-4 py-2 hover:bg-green-500 hover:text-white ">
           <NavLink to="/" onClick={handleLogout}>
             Logout
           </NavLink>
         </li>
       ) : (
-        <li className="pl-4 py-2 hover:bg-cyan-900 hover:text-white">
+        <li className="pl-4 py-2 hover:bg-green-500 hover:text-white">
           <NavLink to="/login">Login</NavLink>
         </li>
 
