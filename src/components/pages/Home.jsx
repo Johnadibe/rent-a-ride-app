@@ -93,12 +93,12 @@ const Home = () => {
   };
 
   return (
-    <section className="h-screen flex flex-col justify-evenly">
+    <section className="h-screen flex flex-col justify-evenly items-center  bg-gray-200">
       <div className="flex flex-col align-middle">
         <h2 className="text-2xl font-extrabold">LATEST PLACE</h2>
         <h5 className="text-xl text-bGrey">Please Select where you want to visit</h5>
       </div>
-      <div className="Home">
+      <div className="Home ">
         {currentPage > 1 && (
           <button
             type="button"
