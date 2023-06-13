@@ -61,7 +61,8 @@ const Nav = () => {
           <NavLink to="/">
             {" "}
             <img src={Logo} alt="Logo" />
-          </NavLink>          </div>
+          </NavLink>          
+          </div>
           <NavLinks toggleNavbar={toggleNavbar} />
           <MediaLinks />
           <p className="text-xs sm:text-sm text-gray-500 fixed bottom-6 left-10">
