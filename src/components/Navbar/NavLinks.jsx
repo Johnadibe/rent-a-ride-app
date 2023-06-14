@@ -1,16 +1,26 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import { destroySession, TOKENKEY } from 'util/auth';
 
 // eslint-disable-next-line react/prop-types
 const NavLinks = ({ toggleNavbar }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-  };
-
   const location = useLocation();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const isActive = (path) => location.pathname === path;
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    setIsLoggedIn(false);
+    destroySession();
+    window.location.href = '/login';
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem(TOKENKEY)) {
+      setIsLoggedIn(true);
+    }
+  }, [isLoggedIn]);
 
   return (
 
@@ -53,9 +63,9 @@ const NavLinks = ({ toggleNavbar }) => {
       </li>
       {isLoggedIn ? (
         <li className="pl-4 py-2 hover:bg-lGreen hover:text-white ">
-          <NavLink to="/login" onClick={handleLogout}>
+          <button type="button" onClick={handleLogout}>
             LOGOUT
-          </NavLink>
+          </button>
         </li>
       ) : (
         <li className="pl-4 py-2 hover:bg-lGreen hover:text-white sm:text-lg">

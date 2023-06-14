@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
-import { getToken } from 'util/auth';
+import { TOKENKEY } from 'util/auth';
 import Login from './Login';
 
 const ProtectedRoute = ({ children }) => {
@@ -9,7 +9,8 @@ const ProtectedRoute = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const checkUserToken = () => {
-    if (!getToken) {
+    if (!localStorage.getItem(TOKENKEY) || localStorage.getItem(TOKENKEY) === undefined) {
+      setIsLoggedIn(false);
       navigate('/login');
     }
 
