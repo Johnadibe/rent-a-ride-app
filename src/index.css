@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.form_input {
+    @apply w-full flex rounded-lg my-4 p-3 text-sm text-gray-500 outline-0 border border-gray-300;
+}
+
+.auth_container {
+    @apply justify-center h-screen items-center flex break-inside-avoid;
+}
+
+.auth_form {
+    @apply break-inside-avoid rounded-lg border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full md:w-2/4 sm:w-11/12 border;
+}
+
+.outline_btn {
+    @apply rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm flex items-center justify-center my-5;
+}
