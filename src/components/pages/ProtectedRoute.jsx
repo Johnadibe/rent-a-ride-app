@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
+import { getToken } from 'util/auth';
 import Login from './Login';
 
 const ProtectedRoute = ({ children }) => {
@@ -8,7 +9,7 @@ const ProtectedRoute = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const checkUserToken = () => {
-    if (!localStorage.getItem('tourx-token')) {
+    if (!getToken) {
       navigate('/login');
     }
 

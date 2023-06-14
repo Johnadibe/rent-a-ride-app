@@ -1,9 +1,12 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { storeSession } from 'util/auth';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,11 +29,12 @@ const Login = () => {
       const key = Object.keys(error);
       setError(error[key][0]);
     } else {
-      localStorage.setItem('user', JSON.stringify(data.user));
-      localStorage.setItem('token', JSON.stringify(data.token));
+      storeSession(data);
+
       setEmail('');
       setPassword('');
-      window.location.href = '/';
+
+      navigate('/');
     }
   };
 

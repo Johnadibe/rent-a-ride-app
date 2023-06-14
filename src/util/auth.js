@@ -1,4 +1,4 @@
-const tokenKey = 'tourx-user';
+const tokenKey = 'tourx-token';
 const userKey = 'tourx-user';
 
 export const setToken = (token) => {
@@ -6,7 +6,7 @@ export const setToken = (token) => {
 };
 
 export const setUser = (user) => {
-  localStorage.setItem(tokenKey, JSON.stringify(user));
+  localStorage.setItem(userKey, JSON.stringify(user));
 };
 
 export const getToken = () => JSON.parse(localStorage.getItem(tokenKey));
@@ -16,4 +16,9 @@ export const getUser = () => JSON.parse(localStorage.getItem(userKey));
 export const storeSession = (data) => {
   setUser(data.user);
   setToken(data.token);
+};
+
+export const destroySession = () => {
+  localStorage.removeItem(tokenKey);
+  localStorage.removeItem(userKey);
 };

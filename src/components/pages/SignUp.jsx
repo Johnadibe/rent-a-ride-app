@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { storeSession } from 'util/auth';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,7 +37,7 @@ const SignUp = () => {
       setEmail('');
       setPassword('');
 
-      window.location.href = '/';
+      navigate('/');
     }
   };
 
