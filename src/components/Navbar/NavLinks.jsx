@@ -53,7 +53,7 @@ const NavLinks = ({ toggleNavbar }) => {
       </li>
       {isLoggedIn ? (
         <li className="pl-4 py-2 hover:bg-lGreen hover:text-white ">
-          <NavLink to="/" onClick={handleLogout}>
+          <NavLink to="/login" onClick={handleLogout}>
             LOGOUT
           </NavLink>
         </li>

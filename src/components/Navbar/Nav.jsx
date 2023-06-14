@@ -29,8 +29,8 @@ const Nav = () => {
   }, []);
 
   return (
-    <>
-      <nav className="hidden sm:block fixed left-0 top-0 w-56 h-screen bg-white shadow-2xl mr-4 pr-5">
+    <div>
+      <nav className="hidden sm:block h-screen bg-white shadow-2xl">
         <div className="flex p-2 pb-14">
           <NavLink to="/">
             {' '}
@@ -70,7 +70,7 @@ const Nav = () => {
           </p>
         </nav>
       </div>
-    </>
+    </div>
   );
 };
 
