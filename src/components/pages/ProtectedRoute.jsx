@@ -1,24 +1,25 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Login from "./Login";
-const ProtectedRoute = (props) => {
-    const navigate = useNavigate();
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Login from './Login';
 
-    const checkUserToken = () => {
-        !!localStorage.getItem('tourx-token') ? setIsLoggedIn(true) : navigate('/login');
-    }
+const ProtectedRoute = (...props) => {
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    useEffect(() => {
-        checkUserToken();
-    }, [isLoggedIn]);
+  const checkUserToken = () => {
+    localStorage.getItem('tourx-token') ? setIsLoggedIn(true) : navigate('/login');
+  };
 
-    return (
-        <>
-            {
-                isLoggedIn ? props.children : <Login/>
-            }
-        </>
-    );
-}
+  useEffect(() => {
+    checkUserToken();
+  }, [isLoggedIn]);
+
+  return (
+    <>
+      {
+        isLoggedIn ? props.children : <Login />
+      }
+    </>
+  );
+};
 export default ProtectedRoute;
