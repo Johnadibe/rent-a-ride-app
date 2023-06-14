@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { destroySession, TOKENKEY } from 'util/auth';
 
 // eslint-disable-next-line react/prop-types
 const NavLinks = ({ toggleNavbar }) => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const isActive = (path) => location.pathname === path;
@@ -13,14 +14,14 @@ const NavLinks = ({ toggleNavbar }) => {
     e.preventDefault();
     setIsLoggedIn(false);
     destroySession();
-    window.location.href = '/login';
+    navigate('/login');
   };
 
   useEffect(() => {
     if (localStorage.getItem(TOKENKEY)) {
       setIsLoggedIn(true);
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, handleLogout]);
 
   return (
 
