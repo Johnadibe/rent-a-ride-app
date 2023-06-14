@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { storeSession } from 'util/auth';
 
 const SignUp = () => {
   const [name, setName] = useState('');
@@ -9,9 +10,10 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch(`${process.env.REACT_APP_API_URL}/login`, {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/signup`, {
       method: 'POST',
       body: JSON.stringify({
+        name,
         email,
         password,
       }),
@@ -27,10 +29,12 @@ const SignUp = () => {
       const key = Object.keys(error);
       setError(error[key][0]);
     } else {
-      localStorage.setItem('user', JSON.stringify(data.user));
-      localStorage.setItem('token', JSON.stringify(data.token));
+      storeSession(data);
+
+      setName('');
       setEmail('');
       setPassword('');
+
       window.location.href = '/';
     }
   };
