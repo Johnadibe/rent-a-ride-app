@@ -4,14 +4,14 @@ import renderer from 'react-test-renderer';
 
 import { BrowserRouter } from 'react-router-dom';
 
-import Navbar from '../Components/Navbar/Navbar';
+import Nav from '../components/Navbar/Nav';
 
 describe('Tests Navbar component', () => {
   it('Should render Navbar Component', () => {
     const tree = renderer
       .create(
         <BrowserRouter>
-          <Navbar />
+          <Nav />
         </BrowserRouter>,
       )
       .toJSON();
