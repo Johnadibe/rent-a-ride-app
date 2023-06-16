@@ -7,6 +7,7 @@ const NavLinks = ({ toggleNavbar }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [token, setToken] = useState("");
 
   const isActive = (path) => location.pathname === path;
 

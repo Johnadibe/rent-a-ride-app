@@ -12,7 +12,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch(`${process.env.REACT_APP_API_URL}/signup`, {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/users`, {
       method: 'POST',
       body: JSON.stringify({
         name,
