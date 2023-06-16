@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests Navbar component Should render Navbar Component 1`] = `
+<section
+  className="h-screen flex flex-col justify-evenly items-center  bg-gray-200"
+>
+  <div
+    className="flex flex-col align-middle"
+  >
+    <h2
+      className="text-2xl font-extrabold"
+    >
+      LATEST PLACE
+    </h2>
+    <h5
+      className="text-xl text-bGrey"
+    >
+      Please Select where you want to visit
+    </h5>
+  </div>
+  <div
+    className="Home "
+  >
+    <div
+      className="Row"
+    >
+      <div
+        className="card-main hover:w-72 hover:h-72"
+        id={1}
+      >
+        <a
+          href="/"
+        >
+          <img
+            alt="Tour 1"
+            src="https://picsum.photos/200/300"
+          />
+          <div
+            className="leading-4"
+          >
+            <h3
+              className="font-bold text-2xl space-y-1"
+            >
+              Tour 1
+            </h3>
+            <p
+              className=" text-base"
+            >
+              Price:
+              100
+              $
+            </p>
+            <p
+              className="Des text-xs text-bGrey"
+            >
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, sit.
+            </p>
+          </div>
+        </a>
+      </div>
+      <div
+        className="card-main hover:w-72 hover:h-72"
+        id={2}
+      >
+        <a
+          href="/"
+        >
+          <img
+            alt="Tour 2"
+            src="https://picsum.photos/200/300"
+          />
+          <div
+            className="leading-4"
+          >
+            <h3
+              className="font-bold text-2xl space-y-1"
+            >
+              Tour 2
+            </h3>
+            <p
+              className=" text-base"
+            >
+              Price:
+              200
+              $
+            </p>
+            <p
+              className="Des text-xs text-bGrey"
+            >
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia sed libero facilis fuga, delectus doloribus?
+            </p>
+          </div>
+        </a>
+      </div>
+      <div
+        className="card-main hover:w-72 hover:h-72"
+        id={3}
+      >
+        <a
+          href="/"
+        >
+          <img
+            alt="Tour 3"
+            src="https://picsum.photos/200/300"
+          />
+          <div
+            className="leading-4"
+          >
+            <h3
+              className="font-bold text-2xl space-y-1"
+            >
+              Tour 3
+            </h3>
+            <p
+              className=" text-base"
+            >
+              Price:
+              200
+              $
+            </p>
+            <p
+              className="Des text-xs text-bGrey"
+            >
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia sed libero facilis fuga, delectus doloribus?
+            </p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <button
+      className="hover:bg-green-600 font-bold py-2 px-4 text-bGrey bg-gradient-to-br from-green-400 to-slate-600 button-next"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      <span
+        className="text-xl"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M5.536 21.886a1.004 1.004 0 0 0 1.033-.064l13-9a1 1 0 0 0 0-1.644l-13-9A.998.998 0 0 0 5 3v18a1 1 0 0 0 .536.886zM7 4.909 17.243 12 7 19.091V4.909z"
+          />
+        </svg>
+      </span>
+    </button>
+  </div>
+</section>
+`;
