@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import Login from '../components/pages/Login';
 
-describe('Tests Navbar component', () => {
+describe('Tests Login component', () => {
   it('Should render Navbar Component', () => {
     const tree = renderer
       .create(
