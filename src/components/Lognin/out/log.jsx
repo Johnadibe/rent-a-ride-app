@@ -1,17 +1,14 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState, useCallback } from 'react';
 import { destroySession, TOKENKEY } from '../../../util/auth';
 
 const Log = () => {
-  const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleLogout = (e) => {
-    e.preventDefault();
+  const handleLogout = useCallback(() => {
     setIsLoggedIn(false);
     destroySession();
-    navigate('/login');
-  };
+    window.location.reload();
+  });
 
   useEffect(() => {
     if (localStorage.getItem(TOKENKEY)) {
