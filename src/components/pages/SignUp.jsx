@@ -25,19 +25,21 @@ const SignUp = () => {
       },
     });
 
-    const data = await res.json();
+    if (res.ok) {
+      const data = await res.json();
+      if (data.error) {
+        setError(data.error);
+      } else {
+        storeSession(data);
 
-    if (data.error) {
-      const key = Object.keys(error);
-      setError(error[key][0]);
+        setName('');
+        setEmail('');
+        setPassword('');
+
+        navigate('/');
+      }
     } else {
-      storeSession(data);
-
-      setName('');
-      setEmail('');
-      setPassword('');
-
-      navigate('/');
+      setError('Oops something went wrong. Try again.');
     }
   };
 
@@ -45,7 +47,7 @@ const SignUp = () => {
     <div className="auth_container">
       <form onSubmit={handleSubmit} className="auth_form">
         <h1 className="text-xl font-black mb-5">Sign Up</h1>
-
+        {error && <div className="bg-red-300 p-4">{error}</div>}
         <input type="text" className="form_input" onChange={(element) => setName(element.target.value)} placeholder="Name" value={name} required />
 
         <input type="email" className="form_input" onChange={(element) => setEmail(element.target.value)} placeholder="Email" value={email} required />

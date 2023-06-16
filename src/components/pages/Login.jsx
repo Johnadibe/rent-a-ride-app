@@ -23,18 +23,21 @@ const Login = () => {
       },
     });
 
-    const data = await res.json();
+    if (res.ok) {
+      const data = await res.json();
 
-    if (data.error) {
-      const key = Object.keys(error);
-      setError(error[key][0]);
+      if (data.error) {
+        setError(data.error);
+      } else {
+        storeSession(data);
+
+        setEmail('');
+        setPassword('');
+
+        navigate('/');
+      }
     } else {
-      storeSession(data);
-
-      setEmail('');
-      setPassword('');
-
-      navigate('/');
+      setError('Oops something went wrong. Try again.');
     }
   };
 
