@@ -1,80 +1,22 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { BiRightArrow, BiLeftArrow } from 'react-icons/bi';
-import React, { useState } from 'react';
+// import { useRef } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchTours } from '../../redux/tours/tours';
 
+// eslint-disable-next-line consistent-return
 const Home = () => {
-  const data = [
-    {
-      id: 1,
-      name: 'Tour 1',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, sit.',
-      price: 100,
-      image: 'https://picsum.photos/200/300',
-    },
-    {
-      id: 2,
-      name: 'Tour 2',
-      description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia sed libero facilis fuga, delectus doloribus?',
-      price: 200,
-      image: 'https://picsum.photos/200/300',
-    },
-    {
-      id: 3,
-      name: 'Tour 3',
-      description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia sed libero facilis fuga, delectus doloribus?',
-      price: 200,
-      image: 'https://picsum.photos/200/300',
-    },
-    {
-      id: 4,
-      name: 'Tour 4',
-      description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia sed libero facilis fuga, delectus doloribus?',
-      price: 200,
-      image: 'https://picsum.photos/200/300',
-    },
-    {
-      id: 5,
-      name: 'Tour 5',
-      description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia sed libero facilis fuga, delectus doloribus?',
-      price: 200,
-      image: 'https://picsum.photos/200/300',
-    },
-    {
-      id: 6,
-      name: 'Tour 6',
-      description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia sed libero facilis fuga, delectus doloribus?',
-      price: 200,
-      image: 'https://picsum.photos/200/300',
-    },
-    {
-      id: 7,
-      name: 'Tour 7',
-      description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia sed libero facilis fuga, delectus doloribus?',
-      price: 200,
-      image: 'https://picsum.photos/200/300',
-    },
-    {
-      id: 8,
-      name: 'Tour 8',
-      description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia sed libero facilis fuga, delectus doloribus?',
-      price: 200,
-      image: 'https://picsum.photos/200/300',
-    },
-    {
-      id: 9,
-      name: 'Tour 9',
-      description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia sed libero facilis fuga, delectus doloribus?',
-      price: 200,
-      image: 'https://picsum.photos/200/300',
-    },
-    {
-      id: 10,
-      name: 'Tour 10',
-      description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia sed libero facilis fuga, delectus doloribus?',
-      price: 200,
-      image: 'https://picsum.photos/200/300',
-    },
-  ];
+  const tourS = useSelector((state) => state.tours);
+  const dispatch = useDispatch();
+  const { loading, data } = tourS;
+
+  useEffect(() => {
+    if (!loading) {
+      return;
+    }
+    dispatch(fetchTours());
+  }, []);
 
   const cardsPerPage = 3;
   const totalPages = Math.ceil(data.length / cardsPerPage);
@@ -92,6 +34,13 @@ const Home = () => {
     setCurrentPage((prevPage) => (prevPage > 1 ? prevPage - 1 : prevPage));
   };
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="loader" />
+      </div>
+    );
+  }
   return (
     <section className="h-screen flex flex-col justify-evenly items-center  bg-gray-200">
       <div className="flex flex-col align-middle">
@@ -104,7 +53,8 @@ const Home = () => {
             type="button"
             onClick={handlePrev}
             disabled={currentPage === 1}
-            className="button-pre py-2 px-4 bg-gradient-to-br from-bGreen to-stone-800 hover:bg-green-600 text-white font-bold"
+            className="button-pre py-2 px-4 bg-gradient-to-br from-bGreen to-stone-800
+                            hover:bg-green-600 text-white font-bold"
           >
             <span><BiLeftArrow /></span>
           </button>
