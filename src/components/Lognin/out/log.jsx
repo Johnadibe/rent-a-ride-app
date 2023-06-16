@@ -1,14 +1,14 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import { destroySession, TOKENKEY } from '../../../util/auth';
 
 const Log = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleLogout = useCallback(() => {
+  const handleLogout = () => {
     setIsLoggedIn(false);
     destroySession();
     window.location.reload();
-  });
+  };
 
   useEffect(() => {
     if (localStorage.getItem(TOKENKEY)) {
