@@ -2,19 +2,22 @@
 import { BiRightArrow, BiLeftArrow } from 'react-icons/bi';
 // import { useRef } from 'react';
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchTours } from '../../redux/tours/tours';
+import { getUser } from '../../util/auth';
+import Log from '../Lognin/out/log';
 
 // eslint-disable-next-line consistent-return
+let render = true;
 const Home = () => {
-  const tourS = useSelector((state) => state.tours);
   const dispatch = useDispatch();
-  const { loading, data } = tourS;
-
+  const tourS = useSelector((state) => state.tours);
+  const { data } = tourS;
   useEffect(() => {
-    if (!loading) {
+    if (!render) {
       return;
     }
+    render = false;
     dispatch(fetchTours());
   }, []);
 
@@ -34,21 +37,32 @@ const Home = () => {
     setCurrentPage((prevPage) => (prevPage > 1 ? prevPage - 1 : prevPage));
   };
 
-  if (loading) {
+  if (render) {
     return (
       <div className="flex justify-center items-center h-screen">
         <div className="loader" />
       </div>
     );
   }
+  if (data.length === 0) {
+    <div>
+      <h3>There is not tour kindly add</h3>
+    </div>;
+  }
   return (
-    <section className="h-screen flex flex-col justify-evenly items-center  bg-gray-200">
-      <div className="flex flex-col align-middle">
-        <h2 className="text-2xl font-extrabold">LATEST PLACE</h2>
-        <h5 className="text-xl text-bGrey">Please Select where you want to visit</h5>
+    <section className="h-screen flex flex-col bg-gray-200">
+      <div className="w-full h-16 bg-gray-100 flex justify-between items-center">
+        {getUser === null ? <h4 className="ml-12 font-bold text-lg">Welcome</h4>
+          : <h4 className="ml-12 font-bold text-lg">{getUser.name}</h4>}
+        <Log />
       </div>
-      <div className="Home w-full">
-        {currentPage > 1 && (
+      <div className="flex flex-col justify-evenly h-4/5">
+        <div className="flex flex-col align-middle text-center">
+          <h2 className="text-2xl font-extrabold">LATEST PLACE</h2>
+          <h5 className="text-xl text-bGrey">Please Select where you want to visit</h5>
+        </div>
+        <div className="Home w-full">
+          {currentPage > 1 && (
           <button
             type="button"
             onClick={handlePrev}
@@ -58,26 +72,30 @@ const Home = () => {
           >
             <span><BiLeftArrow /></span>
           </button>
-        )}
-        <div className="Row">
-          {data.slice(startIndex, endIndex).map((item) => (
-            <div key={item.id} id={item.id} className="card-main hover:w-72 hover:h-72">
-              <a href="/">
-                <img src={item.image} alt={item.name} />
-                <div className="leading-4">
-                  <h3 className="font-bold text-2xl space-y-1">{item.name}</h3>
-                  <p className=" text-base">
-                    Price:
-                    {item.price}
-                    $
-                  </p>
-                  <p className="Des text-xs text-bGrey">{item.description}</p>
+          )}
+          <div className="Row">
+            {data.length === 0 ? <h3>There is no tour kindly add</h3>
+              : data.slice(startIndex, endIndex).map((item) => (
+                <div key={item.id} id={item.id} className="card-main hover:w-72 hover:h-72">
+                  <a href="/">
+                    <img src={item.image} alt={item.name} />
+                    <div className="leading-4">
+                      <h3 className="font-bold text-2xl space-y-1">{item.name}</h3>
+                      <p className="text-base">
+                        Price:
+                        {' '}
+                        {item.price}
+                        {' '}
+                        $
+                      </p>
+                      <p className="Des text-xs text-bGrey">{item.description}</p>
+                    </div>
+                  </a>
                 </div>
-              </a>
-            </div>
-          ))}
-        </div>
-        {currentPage < totalPages && (
+              ))}
+
+          </div>
+          {currentPage < totalPages && (
           <button
             type="button"
             onClick={handleNext}
@@ -86,7 +104,8 @@ const Home = () => {
           >
             <span className="text-xl"><BiRightArrow /></span>
           </button>
-        )}
+          )}
+        </div>
       </div>
     </section>
   );
