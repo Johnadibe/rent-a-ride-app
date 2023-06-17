@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteReservation, fetchReservations } from '../../redux/reservations';
+import { deleteReservation, fetchReservations } from '../../redux/reservationSlice';
 
 const Reservations = () => {
   const dispatch = useDispatch();
@@ -10,7 +10,15 @@ const Reservations = () => {
     dispatch(fetchReservations());
   }, [dispatch]);
 
-  
+  const getTourName = (id) => {
+    const tour = tours.find((yourTour) => yourTour.id === id);
+    return tour ? tour.name : '';
+  };
+
+  const getTourImage = (id) => {
+    const tour = tours.find((yourTour) => yourTour.id === id);
+    return tour ? tour.img_url : '';
+  };
 
   const handleDeleteReservation = (id) => {
     if (window.confirm('Are you sure you want to cancel this reservation?')) {
@@ -18,23 +26,14 @@ const Reservations = () => {
     }
   };
 
-  if (!localStorage.getItem('id')) {
-    return (
-      <div className="flex flex-col items-center justify-center h-screen p-2">
-        <h1 className="sm:text-3xl text-2xl font-bold mb-4">Sorry!</h1>
-        <p className="text-lg text-gray-600 mb-8 text-center">
-          Looks like you&apos;re not logged in yet. Please login to access this
-          page.
-        </p>
-      </div>
-    );
-  }
-
   return (
     <div className="flex justify-center flex-col items-center p-4">
       <h2 className="sm:text-3xl text-2xl font-bold mb-6 pt-4">
-        Reservations for:{' '}
-        
+        Reservations for:
+        {' '}
+        {localStorage.getItem('name')
+          && localStorage.getItem('name').charAt(0).toUpperCase()
+            + localStorage.getItem('name').slice(1)}
       </h2>
       <div className="flex flex-wrap flex-col sm:flex-row gap-4 justify-center items-center w-full">
         {reservations.length === 0 && (
@@ -47,11 +46,14 @@ const Reservations = () => {
             className="bg-white rounded-lg shadow-lg flex flex-col overflow-hidden"
             key={reservation.id}
           >
-            <h1>Image goe here</h1>
+            <img
+
+              className="h-44 w-96 object-cover rounded-t-lg"
+            />
             <div className="p-6 flex-grow flex flex-col justify-between">
               <div>
                 <p className="text-lg font-bold mb-2 text-gray-800">
-                  {reservation.tour_id}
+                  {getMotorcycleName(reservation.motorcycle_id)}
                 </p>
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-gray-700 font-bold">City:</span>
