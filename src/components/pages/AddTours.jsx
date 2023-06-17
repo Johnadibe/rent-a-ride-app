@@ -1,41 +1,61 @@
 import React, { useState } from 'react';
-// import FormData from 'form-data';
-import { useDispatch } from 'react-redux';
-import { postTours } from '../../redux/tours/toursPost';
+// import { useDispatch } from 'react-redux';
+// import { postTours } from '../../redux/tours/toursPost';
 import { getToken } from '../../util/auth';
 
 const AddTours = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [city, setCity] = useState('');
   const [price, setPrice] = useState('');
   const [video, setVideo] = useState('');
   const [image, setImage] = useState(null);
-
   const [des, setDes] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // const formData = new FormData();
-    // formData.append('name', name);
-    // formData.append('city', city);
-    // formData.append('price', price);
-    // formData.append('video', video);
-    // formData.append('image', image);
-    // formData.append('des', description);
-    // for (const [key, value] of formData.entries()) {
-    //   console.log(`${key}: ${value}`);
-    // }
-    // console.log(image);
-    if (getToken !== null) {
-      dispatch(postTours(name, city, price, video, image, des));
+    const formData = new FormData();
+    formData.append('name', encodeURIComponent(name));
+    formData.append('city', encodeURIComponent(city));
+    formData.append('price', encodeURIComponent(price));
+    formData.append('video', encodeURIComponent(video));
+    formData.append('image', image);
+    formData.append('des', encodeURIComponent(des));
+
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/tours`, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${getToken}`,
+      },
+    });
+    const data = await response.json();
+    if (data.error) {
+      alert(data.error);
     } else {
-      alert('You are not sigin');
+      alert('Tour added successfully');
     }
   };
+
+  // console.log(handleSubmit);
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   console.log(image);
+
+  //   const jsonData = formDataToJson(formData);
+  //   console.log(jsonData);
+
+  //   if (getToken !== null) {
+  //     dispatch(postTours(jsonData));
+  //   } else {
+  //     alert('You are not signed in');
+  //   }
+  // };
   return (
     <div className="w-full h-screen ">
-      <form onSubmit={handleSubmit} className="flex flex-col justify-evenly items-center w-full h-72">
+      <form encType="multipart/form-data" onSubmit={handleSubmit} className="flex flex-col justify-evenly items-center w-full h-72">
         <h3 className="text-3xl text-center font-bold">Add Tours</h3>
         <div className="flex flex-col justify-between h-3/6">
           <div className="m-1 p-1 rounded-full max-w-sm bg-gradient-to-r from-gray-400 via-white to-gray-500">
@@ -52,7 +72,7 @@ const AddTours = () => {
           </div>
           <div className="mt-2 mb-2">
             <h4 className="font-semibold">Add Image</h4>
-            <input type="file" name="image" id="image" onChange={(e) => setImage(e.target.files)} required />
+            <input type="file" name="image" id="image" onChange={(e) => setImage(e.target.files[0])} required />
           </div>
           <div className="m-1 p-1 rounded-full max-w-sm bg-gradient-to-r from-gray-400 via-white to-gray-500">
             <input className="p-2 w-full rounded-xl focus:outline-none" type="text" name="des" id="des" onChange={(e) => setDes(e.target.value)} placeholder="Write a description of tour" required />

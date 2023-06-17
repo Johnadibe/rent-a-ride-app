@@ -43,11 +43,6 @@ const Home = () => {
       </div>
     );
   }
-  // if (data.length === 0) {
-  //   <div>
-  //     <h3>There is not tour kindly add</h3>
-  //   </div>;
-  // }
   return (
     <section className="h-screen flex flex-col bg-gray-200">
       <div className="w-full h-16 bg-gray-100 flex justify-between items-center">

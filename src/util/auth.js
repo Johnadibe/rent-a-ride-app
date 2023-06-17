@@ -9,9 +9,11 @@ export const setUser = (user) => {
   localStorage.setItem(USERKEY, JSON.stringify(user));
 };
 
-export const getToken = JSON.parse(localStorage.getItem(TOKENKEY));
+export const getToken = localStorage.getItem(TOKENKEY)
+  ? JSON.parse(localStorage.getItem(TOKENKEY))
+  : null;
 
-export const getUser = JSON.parse(localStorage.getItem(USERKEY));
+export const getUser = localStorage.getItem(USERKEY);
 
 export const storeSession = (data) => {
   setUser(data.user);
