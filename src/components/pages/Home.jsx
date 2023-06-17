@@ -1,6 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { BiRightArrow, BiLeftArrow } from 'react-icons/bi';
-// import { useRef } from 'react';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTours } from '../../redux/tours/tours';

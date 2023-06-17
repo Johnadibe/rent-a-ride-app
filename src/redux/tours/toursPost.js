@@ -1,16 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { getToken } from '../../util/auth';
 
-export const fetchTours = createAsyncThunk('tours/PostTours', async (name, city, price, video, image, description) => {
+export const postTours = createAsyncThunk('tours/PostTours', async (formData) => {
+  console.log(formData);
   const response = await fetch(`${process.env.REACT_APP_API_URL}/tours`, {
     method: 'POST',
     body: JSON.stringify({
-      name,
-      city,
-      price,
-      video,
-      image,
-      des: description,
+      formData
     }),
     headers: {
       'Content-Type': 'application/json',
@@ -21,7 +17,7 @@ export const fetchTours = createAsyncThunk('tours/PostTours', async (name, city,
   return data;
 });
 
-const ToursSlice = createSlice({
+const PTSlice = createSlice({
   name: 'Posttours',
   initialState: {
     tours: [],
@@ -29,11 +25,11 @@ const ToursSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(fetchTours.fulfilled, (state, action) => ({
+      .addCase(postTours.fulfilled, (state, action) => ({
         ...state,
         tours: action.payload,
       }));
   },
 });
 
-export default ToursSlice.reducer;
+export default PTSlice.reducer;
