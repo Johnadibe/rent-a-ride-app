@@ -1,10 +1,8 @@
+/* eslint-disable no-alert */
 import React, { useState } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { postTours } from '../../redux/tours/toursPost';
 import { getToken } from '../../util/auth';
 
 const AddTours = () => {
-  // const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [city, setCity] = useState('');
   const [price, setPrice] = useState('');
@@ -36,22 +34,6 @@ const AddTours = () => {
       alert('Tour added successfully');
     }
   };
-
-  // console.log(handleSubmit);
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   console.log(image);
-
-  //   const jsonData = formDataToJson(formData);
-  //   console.log(jsonData);
-
-  //   if (getToken !== null) {
-  //     dispatch(postTours(jsonData));
-  //   } else {
-  //     alert('You are not signed in');
-  //   }
-  // };
   return (
     <div className="w-full h-screen ">
       <form onSubmit={handleSubmit} className="flex flex-col justify-evenly items-center w-full h-72">

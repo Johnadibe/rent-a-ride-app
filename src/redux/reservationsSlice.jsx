@@ -27,17 +27,17 @@ const reservationSlice = createSlice({
   },
 });
 export const deleteReservation = createAsyncThunk(
-    'reservations/deleteReservation',
-    async (reservationId) => {
-      const response = await fetch(
-        `https://motomate-api.herokuapp.com/api/v1/reservations/user/${reservationId}`, // include the reservationId in the URL
-        {
-          method: 'DELETE',
-        },
-      );
-      const data = await response.json();
-      return data;
-    },
-  );
+  'reservations/deleteReservation',
+  async (reservationId) => {
+    const response = await fetch(
+      `https://motomate-api.herokuapp.com/api/v1/reservations/user/${reservationId}`, // include the reservationId in the URL
+      {
+        method: 'DELETE',
+      },
+    );
+    const data = await response.json();
+    return data;
+  },
+);
 
 export default reservationSlice.reducer; // Export the reducer instead of the entire slice

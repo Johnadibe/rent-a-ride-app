@@ -10,8 +10,6 @@ const Reservations = () => {
     dispatch(fetchReservations());
   }, [dispatch]);
 
-  
-
   const handleDeleteReservation = (id) => {
     if (window.confirm('Are you sure you want to cancel this reservation?')) {
       dispatch(deleteReservation(id)).then(() => dispatch(fetchReservations()));
@@ -33,8 +31,9 @@ const Reservations = () => {
   return (
     <div className="flex justify-center flex-col items-center p-4">
       <h2 className="sm:text-3xl text-2xl font-bold mb-6 pt-4">
-        Reservations for:{' '}
-        
+        Reservations for:
+        {' '}
+
       </h2>
       <div className="flex flex-wrap flex-col sm:flex-row gap-4 justify-center items-center w-full">
         {reservations.length === 0 && (
