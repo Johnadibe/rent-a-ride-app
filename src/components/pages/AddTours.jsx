@@ -26,7 +26,6 @@ const AddTours = () => {
       method: 'POST',
       body: formData,
       headers: {
-        'Content-Type': 'multipart/form-data',
         Authorization: `Bearer ${getToken}`,
       },
     });
@@ -55,7 +54,7 @@ const AddTours = () => {
   // };
   return (
     <div className="w-full h-screen ">
-      <form encType="multipart/form-data" onSubmit={handleSubmit} className="flex flex-col justify-evenly items-center w-full h-72">
+      <form onSubmit={handleSubmit} className="flex flex-col justify-evenly items-center w-full h-72">
         <h3 className="text-3xl text-center font-bold">Add Tours</h3>
         <div className="flex flex-col justify-between h-3/6">
           <div className="m-1 p-1 rounded-full max-w-sm bg-gradient-to-r from-gray-400 via-white to-gray-500">

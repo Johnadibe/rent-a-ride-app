@@ -72,7 +72,7 @@ const Home = () => {
               : data.slice(startIndex, endIndex).map((item) => (
                 <div key={item.id} id={item.id} className="card-main hover:w-72 hover:h-72">
                   <a href="/">
-                    <img src={item.image} alt={item.name} />
+                    <img src={`http://localhost:3000${item.image_url}`} alt={item.name} />
                     <div className="leading-4">
                       <h3 className="font-bold text-2xl space-y-1">{item.name}</h3>
                       <p className="text-base">
