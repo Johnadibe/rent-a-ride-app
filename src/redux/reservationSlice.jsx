@@ -1,4 +1,3 @@
-/* eslint no-underscore-dangle: ["error", { "allow": ["country.countryInfo._id", "_id"] }] */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -10,7 +9,22 @@ const initialState = {
   error: null,
 };
 
-export const fetchReservations = createAsyncThunk('country/fetchReservations', async () => {
+// Define an async thunk to delete a reservation from the API
+export const deleteReservation = createAsyncThunk(
+  'reservations/deleteReservation',
+  async (reservationId) => {
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}${reservationId}`,
+      {
+        method: 'DELETE',
+      },
+    );
+    const data = await response.json();
+    return data;
+  },
+);
+
+export const fetchReservations = createAsyncThunk('reservations/fetchReservations', async () => {
   try {
     const response = await axios.get(api);
     return response.data;
@@ -33,7 +47,7 @@ export const reservationSlice = createSlice({
         reservationList: action.payload.map((reservation) => ({
           start_end: reservation.start_end,
           end_date: reservation.end_date,
-          id: reservation._id,
+          id: reservation.id,
           city: reservation.city,
         })),
         status: 'loaded',

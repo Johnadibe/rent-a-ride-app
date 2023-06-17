@@ -5,7 +5,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import ProtectedRoute from './pages/ProtectedRoute';
-import Reservations from './pages/Reservations'
+import Reservations from './pages/Reservations';
 
 function App() {
   return (

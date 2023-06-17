@@ -10,8 +10,13 @@ const Reservations = () => {
     dispatch(fetchReservations());
   }, [dispatch]);
 
+  const getTourName = (id) => {
+    const tour = tours.find((yourTour) => yourTour.id === id);
+    return tour ? tour.name : '';
+  };
+
   const getTourImage = (id) => {
-    const tour = tours.find((moto) => moto.id === id);
+    const tour = tours.find((yourTour) => yourTour.id === id);
     return tour ? tour.img_url : '';
   };
 
@@ -21,25 +26,14 @@ const Reservations = () => {
     }
   };
 
-  if (!localStorage.getItem('id')) {
-    return (
-      <div className="flex flex-col items-center justify-center h-screen p-2">
-        <h1 className="sm:text-3xl text-2xl font-bold mb-4">Sorry!</h1>
-        <p className="text-lg text-gray-600 mb-8 text-center">
-          Looks like you&apos;re not logged in yet. Please login to access this
-          page.
-        </p>
-      </div>
-    );
-  }
-
   return (
     <div className="flex justify-center flex-col items-center p-4">
       <h2 className="sm:text-3xl text-2xl font-bold mb-6 pt-4">
-        Reservations for:{' '}
-        {localStorage.getItem('name') &&
-          localStorage.getItem('name').charAt(0).toUpperCase() +
-            localStorage.getItem('name').slice(1)}
+        Reservations for:
+        {' '}
+        {localStorage.getItem('name')
+          && localStorage.getItem('name').charAt(0).toUpperCase()
+            + localStorage.getItem('name').slice(1)}
       </h2>
       <div className="flex flex-wrap flex-col sm:flex-row gap-4 justify-center items-center w-full">
         {reservations.length === 0 && (
@@ -53,8 +47,7 @@ const Reservations = () => {
             key={reservation.id}
           >
             <img
-              src={getMotorcycleImage(reservation.motorcycle_id)}
-              alt={getMotorcycleName(reservation.motorcycle_id)}
+
               className="h-44 w-96 object-cover rounded-t-lg"
             />
             <div className="p-6 flex-grow flex flex-col justify-between">
