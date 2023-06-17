@@ -22,6 +22,7 @@ const reservationSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchReservation.fulfilled, (state, action) => {
+      // eslint-disable-next-line no-param-reassign
       state.data = action.payload;
     });
   },

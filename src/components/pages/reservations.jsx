@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+/* eslint-disable import/extensions */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteReservation, fetchReservations } from '../../redux/reservations';
@@ -69,6 +71,7 @@ const Reservations = () => {
               </div>
               <div className="flex justify-end">
                 <button
+                  type="button"
                   className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full mt-2"
                   onClick={() => handleDeleteReservation(reservation.id)}
                 >
