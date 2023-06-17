@@ -26,7 +26,7 @@ const AddTours = () => {
     // for (const [key, value] of formData.entries()) {
     //   console.log(`${key}: ${value}`);
     // }
-    console.log(image);
+    // console.log(image);
     if (getToken !== null) {
       dispatch(postTours(name, city, price, video, image, des));
     } else {
@@ -52,7 +52,7 @@ const AddTours = () => {
           </div>
           <div className="mt-2 mb-2">
             <h4 className="font-semibold">Add Image</h4>
-            <input type="file" name="image" id="image" onChange={(e) => setImage(e.target.files[0])} required />
+            <input type="file" name="image" id="image" onChange={(e) => setImage(e.target.files)} required />
           </div>
           <div className="m-1 p-1 rounded-full max-w-sm bg-gradient-to-r from-gray-400 via-white to-gray-500">
             <input className="p-2 w-full rounded-xl focus:outline-none" type="text" name="des" id="des" onChange={(e) => setDes(e.target.value)} placeholder="Write a description of tour" required />
