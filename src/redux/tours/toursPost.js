@@ -1,12 +1,17 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { getToken } from '../../util/auth';
 
-export const postTours = createAsyncThunk('tours/PostTours', async (formData) => {
-  console.log(formData);
+export const postTours = createAsyncThunk('tours/PostTours', async (name, city, price, video, image, des) => {
+  console.log(name);
   const response = await fetch(`${process.env.REACT_APP_API_URL}/tours`, {
     method: 'POST',
     body: JSON.stringify({
-      formData
+      name,
+      city,
+      price,
+      video,
+      image,
+      des,
     }),
     headers: {
       'Content-Type': 'application/json',
