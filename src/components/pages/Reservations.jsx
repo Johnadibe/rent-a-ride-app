@@ -1,26 +1,18 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteReservation, fetchReservations } from '../../redux/reservations';
-import { fetchMotorcycle } from '../../redux/motorcycles';
+import { deleteReservation, fetchReservations } from '../../redux/reservationSlice';
 
 const Reservations = () => {
   const dispatch = useDispatch();
   const reservations = useSelector((state) => state.reservations);
-  const motorcycles = useSelector((state) => state.motorcycles);
 
   useEffect(() => {
     dispatch(fetchReservations());
-    dispatch(fetchMotorcycle());
   }, [dispatch]);
 
-  const getMotorcycleName = (id) => {
-    const motorcycle = motorcycles.find((moto) => moto.id === id);
-    return motorcycle ? motorcycle.name : '';
-  };
-
-  const getMotorcycleImage = (id) => {
-    const motorcycle = motorcycles.find((moto) => moto.id === id);
-    return motorcycle ? motorcycle.img_url : '';
+  const getTourImage = (id) => {
+    const tour = tours.find((moto) => moto.id === id);
+    return tour ? tour.img_url : '';
   };
 
   const handleDeleteReservation = (id) => {
@@ -77,7 +69,7 @@ const Reservations = () => {
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-gray-700 font-bold">Start Date:</span>
                   <span className="text-gray-700">
-                    {reservation.start_date}
+                    {reservation.start_end}
                   </span>
                 </div>
                 <div className="flex justify-between items-center mb-2">
