@@ -7,13 +7,17 @@ import { getUser } from '../../util/auth';
 import Log from '../Lognin/out/log';
 
 // eslint-disable-next-line consistent-return
-// let render = true;
+let render = false;
 const Home = () => {
   const dispatch = useDispatch();
   const tourS = useSelector((state) => state.tours);
   const { data } = tourS;
   useEffect(() => {
+    if (render) {
+      return;
+    }
     dispatch(fetchTours());
+    render = true;
   }, []);
 
   const cardsPerPage = 3;
@@ -32,13 +36,23 @@ const Home = () => {
     setCurrentPage((prevPage) => (prevPage > 1 ? prevPage - 1 : prevPage));
   };
 
-  // if (render) {
-  //   return (
-  //     <div className="flex justify-center items-center h-screen">
-  //       <div className="loader" />
-  //     </div>
-  //   );
-  // }
+  if (render === false) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <div
+          className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+          role="status"
+        >
+          <span
+            className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+          >
+            Loading...
+          </span
+        >
+        </div>
+      </div>
+    );
+  }
   return (
     <section className="h-screen flex flex-col bg-gray-200">
       <div className="w-full h-16 bg-gray-100 flex justify-between items-center">
@@ -53,15 +67,15 @@ const Home = () => {
         </div>
         <div className="Home w-full">
           {currentPage > 1 && (
-          <button
-            type="button"
-            onClick={handlePrev}
-            disabled={currentPage === 1}
-            className="button-pre py-2 px-4 bg-gradient-to-br from-bGreen to-stone-800
+            <button
+              type="button"
+              onClick={handlePrev}
+              disabled={currentPage === 1}
+              className="button-pre py-2 px-4 bg-gradient-to-br from-bGreen to-stone-800
                             hover:bg-green-600 text-white font-bold"
-          >
-            <span><BiLeftArrow /></span>
-          </button>
+            >
+              <span><BiLeftArrow /></span>
+            </button>
           )}
           <div className="Row">
             {data.length === 0 ? <h3>There is no tour kindly add</h3>
@@ -75,10 +89,9 @@ const Home = () => {
                         Price:
                         {' '}
                         {item.price}
-                        {' '}
                         $
                       </p>
-                      <p className="Des text-xs text-bGrey">{item.description}</p>
+                      <p className="Des text-xs text-bGrey">{item.des}</p>
                     </div>
                   </a>
                 </div>
@@ -86,14 +99,14 @@ const Home = () => {
 
           </div>
           {currentPage < totalPages && (
-          <button
-            type="button"
-            onClick={handleNext}
-            disabled={currentPage === totalPages}
-            className="hover:bg-green-600 font-bold py-2 px-4 text-bGrey bg-gradient-to-br from-green-400 to-slate-600 button-next"
-          >
-            <span className="text-xl"><BiRightArrow /></span>
-          </button>
+            <button
+              type="button"
+              onClick={handleNext}
+              disabled={currentPage === totalPages}
+              className="hover:bg-green-600 font-bold py-2 px-4 text-bGrey bg-gradient-to-br from-green-400 to-slate-600 button-next"
+            >
+              <span className="text-xl"><BiRightArrow /></span>
+            </button>
           )}
         </div>
       </div>
