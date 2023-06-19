@@ -7,16 +7,12 @@ import { getUser } from '../../util/auth';
 import Log from '../Lognin/out/log';
 
 // eslint-disable-next-line consistent-return
-let render = true;
+// let render = true;
 const Home = () => {
   const dispatch = useDispatch();
   const tourS = useSelector((state) => state.tours);
   const { data } = tourS;
   useEffect(() => {
-    if (!render) {
-      return;
-    }
-    render = false;
     dispatch(fetchTours());
   }, []);
 
@@ -36,13 +32,13 @@ const Home = () => {
     setCurrentPage((prevPage) => (prevPage > 1 ? prevPage - 1 : prevPage));
   };
 
-  if (render) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="loader" />
-      </div>
-    );
-  }
+  // if (render) {
+  //   return (
+  //     <div className="flex justify-center items-center h-screen">
+  //       <div className="loader" />
+  //     </div>
+  //   );
+  // }
   return (
     <section className="h-screen flex flex-col bg-gray-200">
       <div className="w-full h-16 bg-gray-100 flex justify-between items-center">
