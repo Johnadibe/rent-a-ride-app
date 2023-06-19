@@ -4,6 +4,7 @@ import PageNotFound from './pages/PageNotFound';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
+import AddTours from './pages/AddTours';
 import ProtectedRoute from './pages/ProtectedRoute';
 
 function App() {
@@ -11,9 +12,10 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<ProtectedRoute><Home /></ProtectedRoute>} />
+          <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/add-tour" element={<ProtectedRoute><AddTours /></ProtectedRoute>} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>

@@ -1,80 +1,24 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { BiRightArrow, BiLeftArrow } from 'react-icons/bi';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchTours } from '../../redux/tours/tours';
+import { getUser } from '../../util/auth';
+import Log from '../Lognin/out/log';
 
+// eslint-disable-next-line consistent-return
+let render = false;
 const Home = () => {
-  const data = [
-    {
-      id: 1,
-      name: 'Tour 1',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, sit.',
-      price: 100,
-      image: 'https://picsum.photos/200/300',
-    },
-    {
-      id: 2,
-      name: 'Tour 2',
-      description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia sed libero facilis fuga, delectus doloribus?',
-      price: 200,
-      image: 'https://picsum.photos/200/300',
-    },
-    {
-      id: 3,
-      name: 'Tour 3',
-      description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia sed libero facilis fuga, delectus doloribus?',
-      price: 200,
-      image: 'https://picsum.photos/200/300',
-    },
-    {
-      id: 4,
-      name: 'Tour 4',
-      description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia sed libero facilis fuga, delectus doloribus?',
-      price: 200,
-      image: 'https://picsum.photos/200/300',
-    },
-    {
-      id: 5,
-      name: 'Tour 5',
-      description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia sed libero facilis fuga, delectus doloribus?',
-      price: 200,
-      image: 'https://picsum.photos/200/300',
-    },
-    {
-      id: 6,
-      name: 'Tour 6',
-      description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia sed libero facilis fuga, delectus doloribus?',
-      price: 200,
-      image: 'https://picsum.photos/200/300',
-    },
-    {
-      id: 7,
-      name: 'Tour 7',
-      description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia sed libero facilis fuga, delectus doloribus?',
-      price: 200,
-      image: 'https://picsum.photos/200/300',
-    },
-    {
-      id: 8,
-      name: 'Tour 8',
-      description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia sed libero facilis fuga, delectus doloribus?',
-      price: 200,
-      image: 'https://picsum.photos/200/300',
-    },
-    {
-      id: 9,
-      name: 'Tour 9',
-      description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia sed libero facilis fuga, delectus doloribus?',
-      price: 200,
-      image: 'https://picsum.photos/200/300',
-    },
-    {
-      id: 10,
-      name: 'Tour 10',
-      description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia sed libero facilis fuga, delectus doloribus?',
-      price: 200,
-      image: 'https://picsum.photos/200/300',
-    },
-  ];
+  const dispatch = useDispatch();
+  const tourS = useSelector((state) => state.tours);
+  const { data } = tourS;
+  useEffect(() => {
+    if (render) {
+      return;
+    }
+    dispatch(fetchTours());
+    render = true;
+  }, []);
 
   const cardsPerPage = 3;
   const totalPages = Math.ceil(data.length / cardsPerPage);
@@ -92,51 +36,79 @@ const Home = () => {
     setCurrentPage((prevPage) => (prevPage > 1 ? prevPage - 1 : prevPage));
   };
 
-  return (
-    <section className="h-screen flex flex-col justify-evenly items-center  bg-gray-200">
-      <div className="flex flex-col align-middle">
-        <h2 className="text-2xl font-extrabold">LATEST PLACE</h2>
-        <h5 className="text-xl text-bGrey">Please Select where you want to visit</h5>
-      </div>
-      <div className="Home ">
-        {currentPage > 1 && (
-          <button
-            type="button"
-            onClick={handlePrev}
-            disabled={currentPage === 1}
-            className="button-pre py-2 px-4 bg-gradient-to-br from-bGreen to-stone-800 hover:bg-green-600 text-white font-bold"
+  if (render === false) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <div
+          className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+          role="status"
+        >
+          <span
+            className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
           >
-            <span><BiLeftArrow /></span>
-          </button>
-        )}
-        <div className="Row">
-          {data.slice(startIndex, endIndex).map((item) => (
-            <div key={item.id} id={item.id} className="card-main hover:w-72 hover:h-72">
-              <a href="/">
-                <img src={item.image} alt={item.name} />
-                <div className="leading-4">
-                  <h3 className="font-bold text-2xl space-y-1">{item.name}</h3>
-                  <p className=" text-base">
-                    Price:
-                    {item.price}
-                    $
-                  </p>
-                  <p className="Des text-xs text-bGrey">{item.description}</p>
-                </div>
-              </a>
-            </div>
-          ))}
+            Loading...
+          </span
+        >
         </div>
-        {currentPage < totalPages && (
-          <button
-            type="button"
-            onClick={handleNext}
-            disabled={currentPage === totalPages}
-            className="hover:bg-green-600 font-bold py-2 px-4 text-bGrey bg-gradient-to-br from-green-400 to-slate-600 button-next"
-          >
-            <span className="text-xl"><BiRightArrow /></span>
-          </button>
-        )}
+      </div>
+    );
+  }
+  return (
+    <section className="h-screen flex flex-col bg-gray-200">
+      <div className="w-full h-16 bg-gray-100 flex justify-between items-center">
+        {getUser === null ? <h4 className="ml-12 font-bold text-lg">Welcome</h4>
+          : <h4 className="ml-12 font-bold text-lg">{getUser.name}</h4>}
+        <Log />
+      </div>
+      <div className="flex flex-col justify-evenly h-4/5">
+        <div className="flex flex-col align-middle text-center">
+          <h2 className="text-2xl font-extrabold">LATEST PLACE</h2>
+          <h5 className="text-xl text-bGrey">Please Select where you want to visit</h5>
+        </div>
+        <div className="Home w-full">
+          {currentPage > 1 && (
+            <button
+              type="button"
+              onClick={handlePrev}
+              disabled={currentPage === 1}
+              className="button-pre py-2 px-4 bg-gradient-to-br from-bGreen to-stone-800
+                            hover:bg-green-600 text-white font-bold"
+            >
+              <span><BiLeftArrow /></span>
+            </button>
+          )}
+          <div className="Row">
+            {data.length === 0 ? <h3>There is no tour kindly add</h3>
+              : data.slice(startIndex, endIndex).map((item) => (
+                <div key={item.id} id={item.id} className="card-main hover:w-72 hover:h-72">
+                  <a href="/">
+                    <img src={`http://localhost:3000${item.image_url}`} alt={item.name} />
+                    <div className="leading-4">
+                      <h3 className="font-bold text-2xl space-y-1">{item.name}</h3>
+                      <p className="text-base">
+                        Price:
+                        {' '}
+                        {item.price}
+                        $
+                      </p>
+                      <p className="Des text-xs text-bGrey">{item.des}</p>
+                    </div>
+                  </a>
+                </div>
+              ))}
+
+          </div>
+          {currentPage < totalPages && (
+            <button
+              type="button"
+              onClick={handleNext}
+              disabled={currentPage === totalPages}
+              className="hover:bg-green-600 font-bold py-2 px-4 text-bGrey bg-gradient-to-br from-green-400 to-slate-600 button-next"
+            >
+              <span className="text-xl"><BiRightArrow /></span>
+            </button>
+          )}
+        </div>
       </div>
     </section>
   );
