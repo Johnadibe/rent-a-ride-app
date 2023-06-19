@@ -2,6 +2,7 @@
 import React, { useState, useRef } from 'react';
 import { getToken } from '../../util/auth';
 
+let errorState = false;
 const AddTours = () => {
   const [name, setName] = useState('');
   const [city, setCity] = useState('');
@@ -34,19 +35,33 @@ const AddTours = () => {
     });
     const data = await response.json();
     if (data.error) {
-      alert(data.error);
+      errorState = true;
     } else {
-      alert('Tour added successfully');
+      errorState = false;
       setName('');
       setCity('');
       setPrice(0);
       setVideo('');
       setDes('');
       handleReset();
+      console.log(errorState);
     }
   };
   return (
     <div className="w-full h-screen ">
+      {errorState ? (
+        <div role="alert">
+          <div className="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+            <p>Tours is not added</p>
+          </div>
+        </div>
+      ) : (
+        <div role="alert">
+          <div className="border border-t-0 border-green-400 rounded-b bg-green-100 px-4 py-3 text-green-700">
+            <p>Great you add a tour.</p>
+          </div>
+        </div>
+      )}
       <form onSubmit={handleSubmit} className="flex flex-col justify-evenly items-center w-full h-72">
         <h3 className="text-3xl text-center font-bold">Add Tours</h3>
         <div className="flex flex-col justify-between h-3/6">
