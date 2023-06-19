@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { BiRightArrow, BiLeftArrow } from 'react-icons/bi';
 import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+import { BiRightArrow, BiLeftArrow } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTours } from '../../redux/tours/tours';
 import { getUser } from '../../util/auth';
@@ -71,20 +72,19 @@ const Home = () => {
             {data.length === 0 ? <h3>There is no tour kindly add</h3>
               : data.slice(startIndex, endIndex).map((item) => (
                 <div key={item.id} id={item.id} className="card-main hover:w-72 hover:h-72">
-                  <a href="/">
+                  <NavLink to={`/tour/${item.id}`}>
                     <img src={`http://localhost:3000${item.image_url}`} alt={item.name} />
                     <div className="leading-4">
-                      <h3 className="font-bold text-2xl space-y-1">{item.name}</h3>
+                      <h3 className="font-bold text-2xl space-y-1">{decodeURIComponent(item.name)}</h3>
                       <p className="text-base">
                         Price:
                         {' '}
-                        {item.price}
-                        {' '}
                         $
+                        {item.price}
                       </p>
-                      <p className="Des text-xs text-bGrey">{item.description}</p>
+                      <p className="Des text-xs text-bGrey">{decodeURIComponent(item.des)}</p>
                     </div>
-                  </a>
+                  </NavLink>
                 </div>
               ))}
 
