@@ -1,19 +1,25 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { BiRightArrow, BiLeftArrow } from 'react-icons/bi';
 import { AiOutlineRight } from 'react-icons/ai';
 import { SlSettings } from 'react-icons/sl';
 import pic from '../../assets/canva.png';
 import Loader from '../Loader/Loader';
+import { fetchTours } from '../../redux/tours/tours';
 
 const TourDetailsPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const tourDetails = useSelector((state) => state.tours);
   const { loading, data } = tourDetails;
   const tourss = data?.find((t) => t.id === parseInt(id, 10));
+
+  useEffect(() => {
+    dispatch(fetchTours());
+  }, [dispatch]);
 
   return (
     <>
@@ -32,7 +38,7 @@ const TourDetailsPage = () => {
               <h1 className="md:text-right mb-4 text-3xl font-semibold text-slate-800">
                 {decodeURIComponent(tourss?.name)}
               </h1>
-              <p className=" mb-10  md:text-right text-gray-500 text-sm">
+              <p className=" mb-10  md:text-right text-gray-500 text-sm xl:w-1/2 lg:w-1/2">
                 {decodeURIComponent(tourss?.des)}
               </p>
             </div>
