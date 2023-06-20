@@ -8,18 +8,16 @@ import { getUser } from '../../util/auth';
 import Log from '../Lognin/out/log';
 
 // eslint-disable-next-line consistent-return
-let render = true;
+let render;
 const Home = () => {
+  // window.location.reload();
+  render = false;
   const dispatch = useDispatch();
   const tourS = useSelector((state) => state.tours);
   const { data } = tourS;
   useEffect(() => {
-    if (!render) {
-      return;
-    }
-    render = false;
     dispatch(fetchTours());
-  }, []);
+  }, [dispatch]);
 
   const cardsPerPage = 3;
   const totalPages = Math.ceil(data.length / cardsPerPage);

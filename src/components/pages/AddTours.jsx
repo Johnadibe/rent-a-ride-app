@@ -71,13 +71,15 @@ const AddTours = () => {
     <div className="w-full h-screen ">
       {/* {errorState ? (
         <div role="alert">
-          <div className="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+          <div className="border border-t-0 border-red-400 rounded-b bg-red-100 px-4
+          py-3 text-red-700">
             <p>Tours is not added</p>
           </div>
         </div>
       ) : (
         <div role="alert">
-          <div className="border border-t-0 border-green-400 rounded-b bg-green-100 px-4 py-3 text-green-700">
+          <div className="border border-t-0 border-green-400 rounded-b bg-green-100 px-4
+          py-3 text-green-700">
             <p>Great you add a tour.</p>
           </div>
         </div>
