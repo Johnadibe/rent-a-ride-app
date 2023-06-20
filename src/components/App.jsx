@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import TourDetailsPage from './pages/TourDetailsPage';
+import DeleteTourPage from './pages/DeleteTourPage';
 import AddTours from './pages/AddTours';
 import ProtectedRoute from './pages/ProtectedRoute';
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/add-tour" element={<ProtectedRoute><AddTours /></ProtectedRoute>} />
           <Route path="/tour/:id" element={<TourDetailsPage />} />
+          <Route path="/delete-tour" element={<DeleteTourPage />} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
