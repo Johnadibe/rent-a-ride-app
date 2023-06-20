@@ -13,6 +13,17 @@ export const fetchTours = createAsyncThunk('tours/fetchTours', async () => {
   return data;
 });
 
+export const fetchToursAll = createAsyncThunk('tours/fetchToursAll', async () => {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/tours-all`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  const data = await response.json();
+  return data;
+});
+
 export const deleteTour = createAsyncThunk(
   'tours/deleteTour',
   async (tourId) => {
@@ -36,35 +47,28 @@ const ToursSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(fetchTours.fulfilled, (state, action) => ({
+      .addCase(fetchTours.fulfilled, (state, action) => {
+        const newArr = action.payload;
+        state.data = newArr;
+      })
+
+      .addCase(fetchToursAll.fulfilled, (state, action) => ({
         ...state,
         data: action.payload,
       }))
-      // .addCase(deleteTour.fulfilled, (state, action) => {
-      //   state.data = state.data.filter((tour) => tour.id !== action.payload);
-      // });
-
-    // .addCase(deleteTour.fulfilled, (state, action) => {
-    //   const deletedTourId = action.payload;
-    //   // Update the status of the deleted tour in the Redux store
-    //   state.data = state.data.map((tour) => {
-    //     if (tour.id === deletedTourId) {
-    //       return {
-    //         ...tour,
-    //         status: true,
-    //       };
-    //     }
-    //     return tour;
-    //   });
-    // });
 
       .addCase(deleteTour.fulfilled, (state, action) => {
-        const itemId = action.payload;
-        // Find the item by its ID and update its status to removed
-        const item = state.data.find((item) => item.id === itemId);
-        if (item) {
-          item.removed = true;
-        }
+        const deletedTourId = action.payload;
+        // Update the status of the deleted tour in the Redux store
+        state.data = state.data.map((tour) => {
+          if (tour.id === deletedTourId) {
+            return {
+              ...tour,
+              status: true,
+            };
+          }
+          return tour;
+        });
       });
   },
 });
