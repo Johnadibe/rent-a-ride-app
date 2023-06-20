@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import Loader from '../Loader/Loader';
 import { fetchTours, deleteTour } from '../../redux/tours/tours';
 
 const DeleteTourPage = () => {
@@ -20,8 +19,7 @@ const DeleteTourPage = () => {
 
   return (
     <>
-      {/* {loading && <Loader />} */}
-      <div className="w-[50%] m-auto">
+      <div className="w-[70%] m-auto">
         <h1
           className="
             text-3xl mb-4 text-center
@@ -33,16 +31,19 @@ const DeleteTourPage = () => {
           {data.map((info) => (
             <div
               key={info.id}
-              className="flex md:flex-row md:w-full w-[310px]  flex-col items-center justify-between m-auto shadow-md rounded-lg mb-4 md:m-5 md:h-[80px] px-[10px]"
+              className="flex md:flex-row md:w-full w-[310px]  flex-col items-center justify-between m-auto shadow-md rounded-lg mb-4 md:m-5 md:h-[150px] px-[10px]"
             >
-              <div className="md:w-[80px] md:h-[75px] md:rounded-full p-2">
+              <div className="md:w-[30%] md:h-[150px] p-2">
                 <img
                   src={`http://localhost:3000${info.image_url}`}
                   alt={info.name}
-                  className="w-full h-full object-cover rounded-lg md:rounded-full"
+                  className="w-full h-full"
                 />
               </div>
-              {/* add Delete button */}
+              <h2 className="mb-4 text-lg font-semibold text-slate-800">
+                {info.name}
+              </h2>
+
               <div className="flex flex-col justify-center mb-[1rem]">
                 {/* {info.status && <span>Removed</span>} */}
                 {info.removed && <span>Removed</span>}
