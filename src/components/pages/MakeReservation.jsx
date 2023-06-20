@@ -23,10 +23,10 @@ const MakeReservation = () => {
     setEndDate(event.target.value);
   };
 
+  const { id } = useParams();
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const { id } = useParams();
     const tourId = id;
 
     const reservationData = {
@@ -39,8 +39,9 @@ const MakeReservation = () => {
     console.log(reservationData);
     try {
       await dispatch(postReservation(reservationData));
-    } catch (error) {}
-    navigate('/reservations');
+    } catch (error) {
+      navigate('/reservations');
+    }
   };
 
   return (

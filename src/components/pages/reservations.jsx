@@ -15,12 +15,12 @@ const Reservations = () => {
   }, [dispatch]);
 
   const getTourName = (id) => {
-    const tour = tours.find((yourTour) => yourTour.id === id);
+    const tour = reservations.find((yourTour) => yourTour.id === id);
     return tour ? tour.name : '';
   };
 
   const getTourImage = (id) => {
-    const tour = tours.find((yourTour) => yourTour.id === id);
+    const tour = reservations.find((yourTour) => yourTour.id === id);
     return tour ? tour.img_url : '';
   };
 

@@ -4,9 +4,9 @@ import renderer from 'react-test-renderer';
 
 import { BrowserRouter } from 'react-router-dom';
 
-import { Provider } from "react-redux";
+import { Provider } from 'react-redux';
 
-import store from "redux/store";
+import store from 'redux/store';
 
 import Home from '../components/pages/Home';
 
@@ -15,9 +15,9 @@ describe('Tests Home component', () => {
     const tree = renderer
       .create(
         <Provider store={store}>
-        <BrowserRouter>
-          <Home />
-        </BrowserRouter>
+          <BrowserRouter>
+            <Home />
+          </BrowserRouter>
         </Provider>,
       )
       .toJSON();

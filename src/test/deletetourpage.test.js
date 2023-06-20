@@ -4,9 +4,9 @@ import renderer from 'react-test-renderer';
 
 import { BrowserRouter } from 'react-router-dom';
 
-import { Provider } from "react-redux";
+import { Provider } from 'react-redux';
 
-import store from "redux/store";
+import store from 'redux/store';
 
 import TourDetailsPage from '../components/pages/Home';
 
@@ -15,9 +15,9 @@ describe('Tests Delete Tour component', () => {
     const tree = renderer
       .create(
         <Provider store={store}>
-        <BrowserRouter>
-          <TourDetailsPage />
-        </BrowserRouter>
+          <BrowserRouter>
+            <TourDetailsPage />
+          </BrowserRouter>
         </Provider>,
       )
       .toJSON();
