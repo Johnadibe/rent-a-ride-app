@@ -1,8 +1,10 @@
 /* eslint-disable no-alert */
 import React, { useState, useRef } from 'react';
+// import { timeout } from 'q';
+// import { time } from 'console';
 import { getToken } from '../../util/auth';
 
-let errorState = false;
+let errorState;
 const AddTours = () => {
   const [name, setName] = useState('');
   const [city, setCity] = useState('');
@@ -44,12 +46,30 @@ const AddTours = () => {
       setVideo('');
       setDes('');
       handleReset();
-      console.log(errorState);
+      // timeout(2000);
+      // errorState = null;
     }
   };
+  let alertContent;
+
+  if (errorState === true) {
+    alertContent = (
+      <div className="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+        <p>Tours were not added.</p>
+      </div>
+    );
+  } else if (errorState === false) {
+    alertContent = (
+      <div className="border border-t-0 border-green-400 rounded-b bg-green-100 px-4 py-3 text-green-700">
+        <p>Great! You added a tour.</p>
+      </div>
+    );
+  } else {
+    alertContent = null;
+  }
   return (
     <div className="w-full h-screen ">
-      {errorState ? (
+      {/* {errorState ? (
         <div role="alert">
           <div className="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
             <p>Tours is not added</p>
@@ -61,7 +81,8 @@ const AddTours = () => {
             <p>Great you add a tour.</p>
           </div>
         </div>
-      )}
+      )} */}
+      {alertContent}
       <form onSubmit={handleSubmit} className="flex flex-col justify-evenly items-center w-full h-72">
         <h3 className="text-3xl text-center font-bold">Add Tours</h3>
         <div className="flex flex-col justify-between h-3/6">
