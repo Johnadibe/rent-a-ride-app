@@ -12,7 +12,7 @@ const Home = () => {
   // window.location.reload();
   const dispatch = useDispatch();
   const tourS = useSelector((state) => state.tours);
-  const { data, loading } = tourS;
+  const { data } = tourS;
   useEffect(() => {
     dispatch(fetchTours());
   }, [dispatch]);
@@ -38,23 +38,6 @@ const Home = () => {
     const slicedParagraph = slicedWords.join(' ');
     return slicedParagraph;
   };
-
-  if (loading) {
-    return (
-      <div className="w-full h-screen flex justify-center items-center">
-        <div
-          className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-          role="status"
-        >
-          <span
-            className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
-          >
-            Loading...
-          </span>
-        </div>
-      </div>
-    );
-  }
   return (
     <section className="lg:h-screen flex flex-col bg-gray-200">
       <div className="w-full h-16 bg-gray-100 flex justify-between items-center">
