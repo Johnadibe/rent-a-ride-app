@@ -33,6 +33,33 @@ export const fetchReservations = createAsyncThunk('reservations/fetchReservation
   }
 });
 
+// Define an async thunk to post a new reservation to the API
+export const postReservation = createAsyncThunk(
+  'reservations/postReservation',
+  async (reservationData) => {
+    const userId = localStorage.getItem('id');
+    const tour = JSON.parse(localStorage.getItem('tour'));
+    const tourId = tour.id;
+
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}/reservations/user/${userId}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...reservationData,
+          user_id: userId,
+          tour_id: tourId,
+        }),
+      },
+    );
+    const data = await response.json();
+    return data.data;
+  },
+);
+
 export const reservationSlice = createSlice({
   name: 'reservations',
   initialState,
@@ -56,7 +83,17 @@ export const reservationSlice = createSlice({
         ...state,
         status: 'failed',
         error: [...state.error, action.error.message],
-      }));
+      })),
+        // Handle the postReservation fulfilled action
+    builder.addCase(postReservation.fulfilled, (state, action) => {
+      state.push(action.payload);
+    });
+    // Handle the deleteReservation fulfilled action
+    builder.addCase(deleteReservation.fulfilled, (state, action) => {
+      return state.filter(
+        (reservation) => reservation.id !== action.payload.id,
+      );
+    });
   },
 
 });
