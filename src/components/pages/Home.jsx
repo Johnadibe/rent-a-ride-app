@@ -61,7 +61,7 @@ const Home = () => {
               <span><BiLeftArrow /></span>
             </button>
           )}
-          <div className="flex items-center justify-between w-full md:flex-row flex-col">
+          <div className="flex items-center justify-evenly w-full md:flex-row flex-col">
             {data.length === 0 ? <h3>There is no tour kindly add</h3>
               : data.slice(startIndex, endIndex).map((item) => (
                 <div key={item.id} id={item.id} className="card-main hover:w-72 hover:h-72">
