@@ -32,7 +32,6 @@ const Home = () => {
   const handlePrev = () => {
     setCurrentPage((prevPage) => (prevPage > 1 ? prevPage - 1 : prevPage));
   };
-
   const sliceParagraph = (paragraph, limit) => {
     const words = paragraph.split(' ');
     const slicedWords = words.slice(0, limit);
