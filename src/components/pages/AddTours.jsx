@@ -21,12 +21,12 @@ const AddTours = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('name', encodeURIComponent(name));
-    formData.append('city', encodeURIComponent(city));
-    formData.append('price', encodeURIComponent(price));
-    formData.append('video', encodeURIComponent(video));
+    formData.append('name', name);
+    formData.append('city', city);
+    formData.append('price', price);
+    formData.append('video', video);
     formData.append('image', image);
-    formData.append('des', encodeURIComponent(des));
+    formData.append('des', des);
 
     const response = await fetch(`${process.env.REACT_APP_API_URL}/tours`, {
       method: 'POST',

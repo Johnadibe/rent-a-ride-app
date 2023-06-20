@@ -1,23 +1,24 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { BiRightArrow, BiLeftArrow } from 'react-icons/bi';
 import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+import { BiRightArrow, BiLeftArrow } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTours } from '../../redux/tours/tours';
 import { getUser } from '../../util/auth';
 import Log from '../Lognin/out/log';
 
 // eslint-disable-next-line consistent-return
-let render = false;
+let render = true;
 const Home = () => {
   const dispatch = useDispatch();
   const tourS = useSelector((state) => state.tours);
   const { data } = tourS;
   useEffect(() => {
-    if (render) {
+    if (!render) {
       return;
     }
+    render = false;
     dispatch(fetchTours());
-    render = true;
   }, []);
 
   const cardsPerPage = 3;
@@ -36,7 +37,7 @@ const Home = () => {
     setCurrentPage((prevPage) => (prevPage > 1 ? prevPage - 1 : prevPage));
   };
 
-  if (render === false) {
+  if (render) {
     return (
       <div className="w-full h-screen flex justify-center items-center">
         <div
@@ -66,46 +67,45 @@ const Home = () => {
         </div>
         <div className="Home w-full">
           {currentPage > 1 && (
-            <button
-              type="button"
-              onClick={handlePrev}
-              disabled={currentPage === 1}
-              className="button-pre py-2 px-4 bg-gradient-to-br from-bGreen to-stone-800
-                            hover:bg-green-600 text-white font-bold"
-            >
-              <span><BiLeftArrow /></span>
-            </button>
+          <button
+            type="button"
+            onClick={handlePrev}
+            disabled={currentPage === 1}
+            className="button-pre py-2 px-4 bg-lime-500 text-white hover:bg-lime-400 font-bold"
+          >
+            <span><BiLeftArrow /></span>
+          </button>
           )}
           <div className="Row">
             {data.length === 0 ? <h3>There is no tour kindly add</h3>
               : data.slice(startIndex, endIndex).map((item) => (
                 <div key={item.id} id={item.id} className="card-main hover:w-72 hover:h-72">
-                  <a href="/">
+                  <NavLink to={`/tour/${item.id}`}>
                     <img src={`http://localhost:3000${item.image_url}`} alt={item.name} />
                     <div className="leading-4">
-                      <h3 className="font-bold text-2xl space-y-1">{item.name}</h3>
-                      <p className="text-base">
+                      <h3 className="font-bold text-2xl space-y-1">{decodeURIComponent(item.name)}</h3>
+                      <p className="text-base text-center font-[18px]">
                         Price:
                         {' '}
-                        {item.price}
                         $
+                        {item.price}
                       </p>
-                      <p className="Des text-xs text-bGrey">{item.des}</p>
+                      <p className="Des text-lg text-gray-500">{decodeURIComponent(item.des)}</p>
                     </div>
-                  </a>
+                  </NavLink>
                 </div>
               ))}
 
           </div>
           {currentPage < totalPages && (
-            <button
-              type="button"
-              onClick={handleNext}
-              disabled={currentPage === totalPages}
-              className="hover:bg-green-600 font-bold py-2 px-4 text-bGrey bg-gradient-to-br from-green-400 to-slate-600 button-next"
-            >
-              <span className="text-xl"><BiRightArrow /></span>
-            </button>
+          <button
+            type="button"
+            onClick={handleNext}
+            disabled={currentPage === totalPages}
+            className="bg-lime-500 text-white hover:bg-lime-400 font-bold py-2 px-4 button-next"
+          >
+            <span className="text-xl"><BiRightArrow /></span>
+          </button>
           )}
         </div>
       </div>
