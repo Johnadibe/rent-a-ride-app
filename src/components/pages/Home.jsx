@@ -62,8 +62,7 @@ const Home = () => {
             type="button"
             onClick={handlePrev}
             disabled={currentPage === 1}
-            className="button-pre py-2 px-4 bg-gradient-to-br from-bGreen to-stone-800
-                            hover:bg-green-600 text-white font-bold"
+            className="button-pre py-2 px-4 bg-lime-500 text-white hover:bg-lime-400 font-bold"
           >
             <span><BiLeftArrow /></span>
           </button>
@@ -76,13 +75,13 @@ const Home = () => {
                     <img src={`http://localhost:3000${item.image_url}`} alt={item.name} />
                     <div className="leading-4">
                       <h3 className="font-bold text-2xl space-y-1">{decodeURIComponent(item.name)}</h3>
-                      <p className="text-base">
+                      <p className="text-base text-center font-[18px]">
                         Price:
                         {' '}
                         $
                         {item.price}
                       </p>
-                      <p className="Des text-xs text-bGrey">{decodeURIComponent(item.des)}</p>
+                      <p className="Des text-lg text-gray-500">{decodeURIComponent(item.des)}</p>
                     </div>
                   </NavLink>
                 </div>
@@ -94,7 +93,7 @@ const Home = () => {
             type="button"
             onClick={handleNext}
             disabled={currentPage === totalPages}
-            className="hover:bg-green-600 font-bold py-2 px-4 text-bGrey bg-gradient-to-br from-green-400 to-slate-600 button-next"
+            className="bg-lime-500 text-white hover:bg-lime-400 font-bold py-2 px-4 button-next"
           >
             <span className="text-xl"><BiRightArrow /></span>
           </button>
