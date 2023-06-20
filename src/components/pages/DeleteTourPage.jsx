@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTours, deleteTour } from '../../redux/tours/tours';
+import { fetchToursAll, deleteTour } from '../../redux/tours/tours';
 
 const DeleteTourPage = () => {
   const tourList = useSelector((state) => state.tours);
@@ -8,7 +8,7 @@ const DeleteTourPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchTours());
+    dispatch(fetchToursAll());
   }, [dispatch]);
 
   const handleDelete = (id) => {
@@ -45,10 +45,9 @@ const DeleteTourPage = () => {
               </h2>
 
               <div className="flex flex-col justify-center mb-[1rem]">
-                {/* {info.status && <span>Removed</span>} */}
-                {info.removed && <span>Removed</span>}
-                {/* {!info.status && ( */}
-                {!info.removed && (
+                {info.status && <span>Removed</span>}
+                {/* {info.removed && <span>Removed</span>} */}
+                {!info.status && (
                 <button
                   type="button"
                   className="bg-gray-100 text-[#313131] px-4 py-2 rounded-lg"
