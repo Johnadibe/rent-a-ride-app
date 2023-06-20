@@ -16,12 +16,18 @@ const ToursSlice = createSlice({
   name: 'tours',
   initialState: {
     data: [],
+    loading: false,
   },
   reducers: {},
-  extraReducers(builder) {
+  extraReducers: (builder) => {
     builder
+      .addCase(fetchTours.pending, (state) => ({
+        ...state,
+        loading: true,
+      }))
       .addCase(fetchTours.fulfilled, (state, action) => ({
         ...state,
+        loading: false,
         data: action.payload,
       }));
   },

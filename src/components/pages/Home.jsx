@@ -8,13 +8,11 @@ import { getUser } from '../../util/auth';
 import Log from '../Lognin/out/log';
 
 // eslint-disable-next-line consistent-return
-let render;
 const Home = () => {
   // window.location.reload();
-  render = false;
   const dispatch = useDispatch();
   const tourS = useSelector((state) => state.tours);
-  const { data } = tourS;
+  const { data, loading } = tourS;
   useEffect(() => {
     dispatch(fetchTours());
   }, [dispatch]);
@@ -35,7 +33,14 @@ const Home = () => {
     setCurrentPage((prevPage) => (prevPage > 1 ? prevPage - 1 : prevPage));
   };
 
-  if (render) {
+  const sliceParagraph = (paragraph, limit) => {
+    const words = paragraph.split(' ');
+    const slicedWords = words.slice(0, limit);
+    const slicedParagraph = slicedWords.join(' ');
+    return slicedParagraph;
+  };
+
+  if (loading) {
     return (
       <div className="w-full h-screen flex justify-center items-center">
         <div
@@ -52,29 +57,29 @@ const Home = () => {
     );
   }
   return (
-    <section className="h-screen flex flex-col bg-gray-200">
+    <section className="lg:h-screen flex flex-col bg-gray-200">
       <div className="w-full h-16 bg-gray-100 flex justify-between items-center">
         {getUser === null ? <h4 className="ml-12 font-bold text-lg">Welcome</h4>
           : <h4 className="ml-12 font-bold text-lg">{getUser.name}</h4>}
         <Log />
       </div>
-      <div className="flex flex-col justify-evenly h-4/5">
+      <div className="flex flex-col justify-evenly lg:h-4/5">
         <div className="flex flex-col align-middle text-center">
           <h2 className="text-2xl font-extrabold">LATEST PLACE</h2>
-          <h5 className="text-xl text-bGrey">Please Select where you want to visit</h5>
+          <h5 className="text-base md:text-xl text-bGrey">Please Select where you want to visit</h5>
         </div>
-        <div className="Home w-full">
+        <div className=" w-full flex items-center justify-between flex-col md:flex-row">
           {currentPage > 1 && (
-          <button
-            type="button"
-            onClick={handlePrev}
-            disabled={currentPage === 1}
-            className="button-pre py-2 px-4 bg-lime-500 text-white hover:bg-lime-400 font-bold"
-          >
-            <span><BiLeftArrow /></span>
-          </button>
+            <button
+              type="button"
+              onClick={handlePrev}
+              disabled={currentPage === 1}
+              className="button-pre py-2 px-4 bg-lime-500 text-white hover:bg-lime-400 font-bold hidden md:block"
+            >
+              <span><BiLeftArrow /></span>
+            </button>
           )}
-          <div className="Row">
+          <div className="flex items-center justify-between w-full md:flex-row flex-col">
             {data.length === 0 ? <h3>There is no tour kindly add</h3>
               : data.slice(startIndex, endIndex).map((item) => (
                 <div key={item.id} id={item.id} className="card-main hover:w-72 hover:h-72">
@@ -88,7 +93,7 @@ const Home = () => {
                         $
                         {item.price}
                       </p>
-                      <p className="Des text-lg text-gray-500">{decodeURIComponent(item.des)}</p>
+                      <p className="Des text-sm md:text-lg text-gray-500">{sliceParagraph(decodeURIComponent(item.des), 10)}</p>
                     </div>
                   </NavLink>
                 </div>
@@ -96,14 +101,36 @@ const Home = () => {
 
           </div>
           {currentPage < totalPages && (
-          <button
-            type="button"
-            onClick={handleNext}
-            disabled={currentPage === totalPages}
-            className="bg-lime-500 text-white hover:bg-lime-400 font-bold py-2 px-4 button-next"
-          >
-            <span className="text-xl"><BiRightArrow /></span>
-          </button>
+            <button
+              type="button"
+              onClick={handleNext}
+              disabled={currentPage === totalPages}
+              className="bg-lime-500 text-white hover:bg-lime-400 font-bold py-2 px-4 button-next hidden md:block"
+            >
+              <span className="text-xl"><BiRightArrow /></span>
+            </button>
+          )}
+        </div>
+        <div className="flex flex-row-reverse md:hidden">
+          {currentPage > 1 && (
+            <button
+              type="button"
+              onClick={handlePrev}
+              disabled={currentPage === 1}
+              className="font-bold text-green-500 hover:text-green-400"
+            >
+              <span>Prev</span>
+            </button>
+          )}
+          {currentPage < totalPages && (
+            <button
+              type="button"
+              onClick={handleNext}
+              disabled={currentPage === totalPages}
+              className="font-bold text-blue-700 hover:text-green-600"
+            >
+              <span className="">Next</span>
+            </button>
           )}
         </div>
       </div>
