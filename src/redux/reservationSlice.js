@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+// import axios from 'axios';
 
 const api = `${process.env.REACT_APP_API_URL}/reservations`;
 
@@ -26,7 +26,7 @@ export const deleteReservation = createAsyncThunk(
 
 export const fetchReservations = createAsyncThunk('reservations/fetchReservations', async () => {
   try {
-    const response = await axios.get(api);
+    const response = await fetch(api);
     return response.data;
   } catch (error) {
     return error.message;
