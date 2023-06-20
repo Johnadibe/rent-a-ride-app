@@ -1,5 +1,5 @@
 export const TOKENKEY = 'tourx-token';
-const USERKEY = 'tourx-user';
+export const USERKEY = 'tourx-user';
 
 export const setToken = (token) => {
   localStorage.setItem(TOKENKEY, JSON.stringify(token));
@@ -9,7 +9,9 @@ export const setUser = (user) => {
   localStorage.setItem(USERKEY, JSON.stringify(user));
 };
 
-export const getToken = JSON.parse(localStorage.getItem(TOKENKEY));
+export const getToken = localStorage.getItem(TOKENKEY)
+  ? JSON.parse(localStorage.getItem(TOKENKEY))
+  : null;
 
 export const getUser = localStorage.getItem(USERKEY);
 

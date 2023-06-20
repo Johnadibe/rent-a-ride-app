@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { createLogger } from 'redux-logger';
 import reservationReducer from './reservationSlice';
+import ToursSlice from './tours/tours';
 
 const logger = createLogger({
   // Options for the logger can be passed here
@@ -13,7 +14,7 @@ const logger = createLogger({
 export const store = configureStore({
   reducer: {
     reservations: reservationReducer,
-    // rockets: rocketReducer,# Another reducer can be here
+    tours: ToursSlice,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
