@@ -7,7 +7,7 @@ import SignUp from './pages/SignUp';
 import TourDetailsPage from './pages/TourDetailsPage';
 import AddTours from './pages/AddTours';
 import ProtectedRoute from './pages/ProtectedRoute';
-import Reservations from './pages/Reservations';
+import Reservations from './pages/reservations';
 
 function App() {
   return (
