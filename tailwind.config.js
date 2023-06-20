@@ -13,6 +13,7 @@ module.exports = {
         bGrey: '#808080a6',
         lGreen: '#97BF11',
         dimIcon: '#474747',
+        background: 'e5e7eb',
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],

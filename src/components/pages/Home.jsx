@@ -12,12 +12,22 @@ const Home = () => {
   // window.location.reload();
   const dispatch = useDispatch();
   const tourS = useSelector((state) => state.tours);
+  const [cardsPerPage, setCardsPerPage] = useState(window.innerWidth < 768 ? 1 : 3);
   const { data } = tourS;
   useEffect(() => {
     dispatch(fetchTours());
-  }, [dispatch]);
+    const handleResize = () => {
+      setCardsPerPage(window.innerWidth < 768 ? 1 : 3);
+    };
 
-  const cardsPerPage = 3;
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  // const cardsPerPage = 3;
   const totalPages = Math.ceil(data.length / cardsPerPage);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -39,13 +49,13 @@ const Home = () => {
     return slicedParagraph;
   };
   return (
-    <section className="lg:h-screen flex flex-col bg-gray-200">
+    <section className="h-screen flex flex-col bg-gray-200">
       <div className="w-full h-16 bg-gray-100 flex justify-between items-center">
         {getUser === null ? <h4 className="ml-12 font-bold text-lg">Welcome</h4>
-          : <h4 className="ml-12 font-bold text-lg">{getUser.name}</h4>}
+          : <h4 className="md:ml-12 font-bold text-lg">{getUser.name}</h4>}
         <Log />
       </div>
-      <div className="flex flex-col justify-evenly lg:h-4/5">
+      <div className="flex flex-col md:justify-evenly h-4/5">
         <div className="flex flex-col align-middle text-center">
           <h2 className="text-2xl font-extrabold">LATEST PLACE</h2>
           <h5 className="text-base md:text-xl text-bGrey">Please Select where you want to visit</h5>
@@ -93,13 +103,13 @@ const Home = () => {
             </button>
           )}
         </div>
-        <div className="flex flex-row-reverse md:hidden">
+        <div className="flex flex-row-reverse md:hidden bg-background">
           {currentPage > 1 && (
             <button
               type="button"
               onClick={handlePrev}
               disabled={currentPage === 1}
-              className="font-bold text-green-500 hover:text-green-400"
+              className="font-bold text-green-500 hover:text-green-400 px-4"
             >
               <span>Prev</span>
             </button>
