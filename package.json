@@ -7,11 +7,8 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-<<<<<<< HEAD
     "axios": "^1.4.0",
-=======
     "form-data": "^4.0.0",
->>>>>>> f8de640915b2eec995e255b99347dedeea781c6d
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

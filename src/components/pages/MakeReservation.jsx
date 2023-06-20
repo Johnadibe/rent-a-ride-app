@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { postReservation } from '../../redux/reservations';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { postReservation } from '../../redux/reservationSlice';
 
 const MakeReservation = () => {
   const dispatch = useDispatch();
@@ -26,35 +26,22 @@ const MakeReservation = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const userId = localStorage.getItem('id');
-    const motorcycle = JSON.parse(localStorage.getItem('motorcycle'));
-    const motorcycleId = motorcycle.id;
+    const { id } = useParams();
+    const tourId = id;
 
     const reservationData = {
-      start_date: startDate,
+      start_end: startDate,
       end_date: endDate,
-      motorcycle_id: motorcycleId,
+      tour_id: tourId,
       city,
-      user_id: userId,
     };
 
+    console.log(reservationData);
     try {
       await dispatch(postReservation(reservationData));
     } catch (error) {}
     navigate('/reservations');
   };
-
-  if (!localStorage.getItem('id')) {
-    return (
-      <div className="flex flex-col items-center justify-center h-screen p-2">
-        <h1 className="sm:text-3xl text-2xl font-bold mb-4">Sorry!</h1>
-        <p className="text-lg text-gray-600 mb-8 text-center">
-          Looks like you&apos;re not logged in yet. Please login to access this
-          page.
-        </p>
-      </div>
-    );
-  }
 
   return (
     <div
@@ -79,6 +66,7 @@ const MakeReservation = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="city"
             type="text"
+            required
             value={city}
             onChange={handleCityChange}
           />
@@ -94,6 +82,7 @@ const MakeReservation = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="start_date"
             type="date"
+            required
             value={startDate}
             onChange={handleStartDateChange}
           />
@@ -109,6 +98,7 @@ const MakeReservation = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="end_date"
             type="date"
+            required
             value={endDate}
             onChange={handleEndDateChange}
           />

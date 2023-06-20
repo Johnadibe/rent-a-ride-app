@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteReservation, fetchReservations } from '../../redux/reservationSlice';
+import { fetchTours } from '../../redux/tours/tours';
 
 const Reservations = () => {
   const dispatch = useDispatch();
@@ -10,6 +11,7 @@ const Reservations = () => {
 
   useEffect(() => {
     dispatch(fetchReservations());
+    dispatch(fetchTours());
   }, [dispatch]);
 
   const getTourName = (id) => {
@@ -49,13 +51,14 @@ const Reservations = () => {
             key={reservation.id}
           >
             <img
-
+              src={getTourImage(reservation.tour_id)}
+              alt={getTourName(reservation.tour_id)}
               className="h-44 w-96 object-cover rounded-t-lg"
             />
             <div className="p-6 flex-grow flex flex-col justify-between">
               <div>
                 <p className="text-lg font-bold mb-2 text-gray-800">
-                  {getMotorcycleName(reservation.motorcycle_id)}
+                  {getTourName(reservation.tour_id)}
                 </p>
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-gray-700 font-bold">City:</span>

@@ -37,12 +37,8 @@ export const fetchReservations = createAsyncThunk('reservations/fetchReservation
 export const postReservation = createAsyncThunk(
   'reservations/postReservation',
   async (reservationData) => {
-    const userId = localStorage.getItem('id');
-    const tour = JSON.parse(localStorage.getItem('tour'));
-    const tourId = tour.id;
-
     const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/reservations/user/${userId}`,
+      `${process.env.REACT_APP_API_URL}/reservations`,
       {
         method: 'POST',
         headers: {
@@ -50,8 +46,7 @@ export const postReservation = createAsyncThunk(
         },
         body: JSON.stringify({
           ...reservationData,
-          user_id: userId,
-          tour_id: tourId,
+
         }),
       },
     );
@@ -83,17 +78,15 @@ export const reservationSlice = createSlice({
         ...state,
         status: 'failed',
         error: [...state.error, action.error.message],
-      })),
-        // Handle the postReservation fulfilled action
+      }));
+    // Handle the postReservation fulfilled action
     builder.addCase(postReservation.fulfilled, (state, action) => {
       state.push(action.payload);
     });
     // Handle the deleteReservation fulfilled action
-    builder.addCase(deleteReservation.fulfilled, (state, action) => {
-      return state.filter(
-        (reservation) => reservation.id !== action.payload.id,
-      );
-    });
+    builder.addCase(deleteReservation.fulfilled, (state, action) => state.filter(
+      (reservation) => reservation.id !== action.payload.id,
+    ));
   },
 
 });
