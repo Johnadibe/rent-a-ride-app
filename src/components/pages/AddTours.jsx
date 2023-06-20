@@ -44,7 +44,6 @@ const AddTours = () => {
       setVideo('');
       setDes('');
       handleReset();
-      console.log(errorState);
     }
   };
   return (
