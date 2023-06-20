@@ -46,8 +46,6 @@ const AddTours = () => {
       setVideo('');
       setDes('');
       handleReset();
-      // timeout(2000);
-      // errorState = null;
     }
   };
   let alertContent;
