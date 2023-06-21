@@ -1,8 +1,10 @@
 /* eslint-disable no-alert */
 import React, { useState, useRef } from 'react';
+// import { timeout } from 'q';
+// import { time } from 'console';
 import { getToken } from '../../util/auth';
 
-let errorState = false;
+let errorState;
 const AddTours = () => {
   const [name, setName] = useState('');
   const [city, setCity] = useState('');
@@ -46,21 +48,26 @@ const AddTours = () => {
       handleReset();
     }
   };
+  let alertContent;
+
+  if (errorState === true) {
+    alertContent = (
+      <div className="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+        <p>Tours were not added.</p>
+      </div>
+    );
+  } else if (errorState === false) {
+    alertContent = (
+      <div className="border border-t-0 border-green-400 rounded-b bg-green-100 px-4 py-3 text-green-700">
+        <p>Great! You added a tour.</p>
+      </div>
+    );
+  } else {
+    alertContent = null;
+  }
   return (
     <div className="w-full h-screen ">
-      {errorState ? (
-        <div role="alert">
-          <div className="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
-            <p>Tours is not added</p>
-          </div>
-        </div>
-      ) : (
-        <div role="alert">
-          <div className="border border-t-0 border-green-400 rounded-b bg-green-100 px-4 py-3 text-green-700">
-            <p>Great you add a tour.</p>
-          </div>
-        </div>
-      )}
+      {alertContent}
       <form onSubmit={handleSubmit} className="flex flex-col justify-evenly items-center w-full h-72">
         <h3 className="text-3xl text-center font-bold">Add Tours</h3>
         <div className="flex flex-col justify-between h-3/6">
@@ -81,7 +88,7 @@ const AddTours = () => {
             <input ref={fileInputRef} type="file" name="image" id="image" onChange={(e) => setImage(e.target.files[0])} required />
           </div>
           <div className="m-1 p-1 rounded-full max-w-sm bg-gradient-to-r from-gray-400 via-white to-gray-500">
-            <input value={des} className="p-2 w-full rounded-xl focus:outline-none" type="text" name="des" id="des" onChange={(e) => setDes(e.target.value)} placeholder="Write a description of tour" required />
+            <textarea value={des} className="p-2 w-full rounded-xl focus:outline-none" type="text" name="des" id="des" onChange={(e) => setDes(e.target.value)} placeholder="Write a description of tour" required />
           </div>
           <div className="w-full flex justify-center">
             <button type="submit" className="w-52 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Submit Tour</button>
