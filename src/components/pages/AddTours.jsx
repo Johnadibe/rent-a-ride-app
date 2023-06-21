@@ -81,7 +81,7 @@ const AddTours = () => {
             <input value={price} className="p-2 w-full rounded-xl focus:outline-none" type="number" name="price" id="price" onChange={(e) => setPrice(e.target.value)} placeholder="Write tour Price" required />
           </div>
           <div className="m-1 p-1 rounded-full max-w-sm bg-gradient-to-r from-gray-400 via-white to-gray-500">
-            <input value={video} className="p-2 w-full rounded-xl focus:outline-none" type="text" name="video" id="video" onChange={(e) => setVideo(e.target.value)} placeholder="Add video of tour" required />
+            <input value={video} className="p-2 w-full rounded-xl focus:outline-none" type="text" name="video" id="video" onChange={(e) => setVideo(e.target.value)} placeholder="Add video of tour" />
           </div>
           <div className="mt-2 mb-2">
             <h4 className="font-semibold">Add Image</h4>
