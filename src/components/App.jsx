@@ -8,7 +8,7 @@ import TourDetailsPage from './pages/TourDetailsPage';
 import DeleteTourPage from './pages/DeleteTourPage';
 import AddTours from './pages/AddTours';
 import ProtectedRoute from './pages/ProtectedRoute';
-import Reservations from './pages/Reservations';
+import Reservations from './pages/reservations';
 import MakeReservation from './pages/MakeReservation';
 
 function App() {
