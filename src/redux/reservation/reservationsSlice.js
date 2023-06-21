@@ -65,7 +65,7 @@ export const reservationSlice = createSlice({
         error: [...state.error, action.error.message],
       }));
     // Handle the postReservation fulfilled action
-    builder.addCase(postReservation.fulfilled, (state, action) => {
+    builder.addCase(createReservation.fulfilled, (state, action) => {
       state.push(action.payload);
     });
   },

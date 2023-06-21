@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, NavLink } from 'react-router-dom';
 import { BiRightArrow, BiLeftArrow } from 'react-icons/bi';
 import { SlSettings } from 'react-icons/sl';
 import Loader from '../Loader/Loader';
@@ -72,8 +72,8 @@ const TourDetailsPage = () => {
                 allowfullscreen
               />
               <div className="my-6 flex justify-center">
-                <button
-                  type="button"
+                <NavLink
+                  to={`/add-reservation/${id}`}
                   className="bg-lime-500 text-white hover:bg-lime-400 px-6 py-2 rounded-full font-semibold min-w-[10rem] transition-colors border-2 border-transparent mb-4"
                 >
                   <div className="flex items-center gap-3 justify-center">
@@ -81,7 +81,7 @@ const TourDetailsPage = () => {
                     <span>Reserve</span>
                     <BiRightArrow />
                   </div>
-                </button>
+                </NavLink>
               </div>
             </div>
           </div>

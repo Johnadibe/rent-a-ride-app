@@ -1,10 +1,11 @@
 // ReservationForm.js
 import React, { useState } from 'react';
+import { PropTypes } from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { createReservation } from 'redux/reservation/reservationsSlice';
 import { getUser } from 'util/auth';
 
-const ReservationForm = ({ tour_id }) => {
+const ReservationForm = ({ tourId }) => {
   const [startDate, setstartDate] = useState('');
   const [endDate, setendDate] = useState('');
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const ReservationForm = ({ tour_id }) => {
     const reservation = {
       startDate,
       endDate,
-      tour_id,
+      tour_id: tourId,
     };
 
     dispatch(createReservation(reservation));
@@ -45,12 +46,16 @@ const ReservationForm = ({ tour_id }) => {
       <input
         type="text"
         placeholder="End Date"
-        value={date}
+        value={endDate}
         onChange={(e) => setendDate(e.target.value)}
       />
       <button className="outline_btn" type="submit">Create Reservation</button>
     </form>
   );
+};
+
+ReservationForm.propTypes = {
+  tourId: PropTypes.string.isRequired,
 };
 
 export default ReservationForm;

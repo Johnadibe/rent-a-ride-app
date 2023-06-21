@@ -5,7 +5,7 @@ import ToursSlice from './tours/tours';
 const store = configureStore({
   reducer: {
     tours: ToursSlice,
-    reservations: reservationSlice
+    reservations: reservationSlice,
   },
 });
 

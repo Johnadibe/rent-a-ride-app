@@ -1,21 +1,18 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { PropTypes } from 'prop-types';
 import { TOKENKEY } from 'util/auth';
-import Login from './Login';
+import RequireLogin from './pages/RequireLogin';
 
 const ProtectedRoute = ({ children }) => {
-  const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const checkUserToken = () => {
     if (!localStorage.getItem(TOKENKEY) || localStorage.getItem(TOKENKEY) === undefined) {
       setIsLoggedIn(false);
-      navigate('/login');
+    } else {
+      setIsLoggedIn(true);
     }
-
-    setIsLoggedIn(true);
   };
 
   useEffect(() => checkUserToken(), []);
@@ -23,7 +20,7 @@ const ProtectedRoute = ({ children }) => {
   return (
     <>
       {
-        isLoggedIn ? children : <Login />
+        isLoggedIn ? children : <RequireLogin />
       }
     </>
   );
