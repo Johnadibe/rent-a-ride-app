@@ -56,6 +56,15 @@ const NavLinks = ({ toggleNavbar }) => {
       </li>
       <li
         className={`pl-4 py-2 ${
+          isActive('/add-tour')
+            ? 'bg-lGreen text-white'
+            : 'hover:bg-lGreen hover:text-white'
+        }`}
+      >
+        <NavLink to="/add-reservation">BOOK A TOUR</NavLink>
+      </li>
+      <li
+        className={`pl-4 py-2 ${
           isActive('/delete-tour')
             ? 'bg-lGreen text-white'
             : 'hover:bg-lGreen hover:text-white'
