@@ -22,7 +22,7 @@ const DeleteTourPage = () => {
       <div className="w-[70%] m-auto">
         <h1
           className="
-            text-3xl mb-4 text-center
+            text-3xl mb-4 text-center mt-[45px]
             "
         >
           My Tour List
@@ -46,11 +46,10 @@ const DeleteTourPage = () => {
 
               <div className="flex flex-col justify-center mb-[1rem]">
                 {info.status && <span>Removed</span>}
-                {/* {info.removed && <span>Removed</span>} */}
                 {!info.status && (
                 <button
                   type="button"
-                  className="bg-gray-100 text-[#313131] px-4 py-2 rounded-lg"
+                  className="bg-[red] text-[#fff] px-4 py-2 rounded-lg"
                   onClick={() => handleDelete(info.id)}
                 >
                   Delete
