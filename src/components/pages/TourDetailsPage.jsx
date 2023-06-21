@@ -24,11 +24,11 @@ const TourDetailsPage = () => {
       {loading && <Loader />}
       {tourss && (
         <div className="flex flex-col items-center md:justify-start justify-center w-full md:flex-row grow h-full lg:pt-20 lg:pb-10">
-          <div className="grow flex items-center justify-center">
+          <div className="grow flex items-center justify-center w-full">
             <img
               src={`http://localhost:3000${tourss?.image_url}`}
               alt={decodeURIComponent(tourss?.name)}
-              className="block m-4 aspect-square md:ml-[40%]"
+              className="block m-4 aspect-square md:ml-[40%] w-full"
             />
           </div>
           <div className="flex flex-col w-full items-start md:items-end  md:mr-10 py-10 px-10 lg:px-0 text-center">
@@ -88,10 +88,10 @@ const TourDetailsPage = () => {
         </div>
       )}
       <div
-        className="fixed text-[1.8rem]
-                            bottom-[2rem] left-[20rem] z-10 bg-[#98bd2a] text-white
+        className="fixed text-[1.8rem] bottom-0
+                            md:bottom-[2rem] md:left-[20rem] z-10 bg-[#98bd2a] text-white
                             rounded-full p-3 cursor-pointer
-                            hidden md:block
+                            md:block
                             "
         onClick={() => navigate(-1)}
       >

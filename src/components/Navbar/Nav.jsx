@@ -5,8 +5,6 @@ import NavLinks from './NavLinks';
 import MediaLinks from './MediaLinks';
 import Logo from '../../Images/logo.png';
 
-// import { Link } from 'react-router-dom';
-
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navRef = useRef(null);

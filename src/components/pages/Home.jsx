@@ -9,7 +9,6 @@ import Log from '../Lognin/out/log';
 
 // eslint-disable-next-line consistent-return
 const Home = () => {
-  // window.location.reload();
   const dispatch = useDispatch();
   const tourS = useSelector((state) => state.tours);
   const [cardsPerPage, setCardsPerPage] = useState(window.innerWidth < 768 ? 1 : 3);
@@ -27,7 +26,6 @@ const Home = () => {
     };
   }, []);
 
-  // const cardsPerPage = 3;
   const totalPages = Math.ceil(data.length / cardsPerPage);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -50,9 +48,15 @@ const Home = () => {
   };
   return (
     <section className="h-screen flex flex-col bg-gray-200">
-      <div className="w-full h-16 bg-gray-100 flex justify-between items-center">
+      <div className="w-full h-[5rem] bg-gray-100 flex justify-between items-center">
         {getUser === null ? <h4 className="ml-12 font-bold text-lg">Welcome</h4>
-          : <h4 className="md:ml-12 font-bold text-lg">{getUser.name}</h4>}
+          : (
+            <h4 className="get_username md:ml-12 font-bold text-lg">
+              Hello,
+              {' '}
+              {getUser.name}
+            </h4>
+          )}
         <Log />
       </div>
       <div className="flex flex-col md:justify-evenly justify-around h-full">
@@ -74,7 +78,7 @@ const Home = () => {
           <div className="flex items-center justify-evenly w-full md:flex-row flex-col">
             {data.length === 0 ? <h3>There is no tour kindly add</h3>
               : data.slice(startIndex, endIndex).map((item) => (
-                <div key={item.id} id={item.id} className="card-main hover:w-72 hover:h-72">
+                <div key={item.id} id={item.id} className="card-main shadow-md hover:scale-105 transition-transform duration-300">
                   <NavLink to={`/tour/${item.id}`}>
                     <img src={`http://localhost:3000${item.image_url}`} alt={item.name} />
                     <div className="leading-4">
@@ -121,7 +125,7 @@ const Home = () => {
               disabled={currentPage === totalPages}
               className="font-bold text-blue-700 hover:text-green-600"
             >
-              <span className="">Next</span>
+              <span className="pr-5">Next</span>
             </button>
           )}
         </div>
