@@ -8,19 +8,19 @@ import { Provider } from 'react-redux';
 
 import store from 'redux/store';
 
-import Home from '../components/pages/Home';
+import TourDetailsPage from '../components/pages/Home';
 
-describe('Tests Home component', () => {
-  it('Should render Navbar Component', () => {
+describe('Tests Tour Details component', () => {
+  it('Should render Tour Details Page Component', () => {
     const tree = renderer
       .create(
         <Provider store={store}>
           <BrowserRouter>
-            <Home />
+            <TourDetailsPage />
           </BrowserRouter>
         </Provider>,
       )
       .toJSON();
-    expect(tree).toMatchSnapshot('Tests Home component Should render Navbar Component');
+    expect(tree).toMatchSnapshot();
   });
 });
