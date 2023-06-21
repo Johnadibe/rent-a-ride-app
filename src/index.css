@@ -11,7 +11,7 @@
 }
 
 .auth_form {
-  @apply break-inside-avoid rounded-lg border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full md:w-2/4 sm:w-11/12 border;
+  @apply break-inside-avoid rounded-lg border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full sm:w-11/12 border;
 }
 
 .outline_btn {
