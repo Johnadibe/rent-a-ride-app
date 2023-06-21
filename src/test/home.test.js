@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 
 import store from 'redux/store';
 
-import Home from '../components/pages/Home';
+import Home from 'pages/Home';
 
 describe('Tests Home component', () => {
   it('Should render Navbar Component', () => {
