@@ -7,6 +7,7 @@ import TourDetailsPage from 'pages/TourDetailsPage';
 import DeleteTourPage from 'pages/DeleteTourPage';
 import AddTours from 'pages/AddTours';
 import AddReservation from 'pages/AddReservation';
+import Reservations from 'pages/Reservations';
 import Layout from './Layout';
 import ProtectedRoute from './ProtectedRoute';
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/delete-tour" element={<DeleteTourPage />} />
           <Route path="/add-reservation/:tourId" element={<ProtectedRoute><AddReservation /></ProtectedRoute>} />
           <Route path="/add-reservation" element={<ProtectedRoute><AddReservation /></ProtectedRoute>} />
+          <Route path="/reservations" element={<ProtectedRoute><Reservations /></ProtectedRoute>} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>

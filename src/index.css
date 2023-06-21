@@ -19,7 +19,7 @@
 }
 
 .auth_form {
-  @apply break-inside-avoid rounded-lg border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full sm:w-11/12 border;
+  @apply break-inside-avoid rounded-lg border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[460px] w-full sm:w-11/12 border;
 }
 
 .outline_btn {
@@ -28,4 +28,8 @@
 
 .white_btn {
   @apply rounded-full border border-primary bg-white py-3 px-10 text-primary transition-all hover:bg-primary hover:text-white font-extrabold text-center flex items-center justify-center my-5;
+}
+
+.primary_btn {
+  @apply rounded-full border border-primary bg-primary py-2 px-10 text-white transition-all hover:bg-white hover:text-primary font-extrabold text-center flex items-center justify-center my-5;
 }

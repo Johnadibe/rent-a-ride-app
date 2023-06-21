@@ -12,7 +12,7 @@ const ReservationForm = ({ tourId = null }) => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState(tourId);
   const { data } = useSelector((state) => state.tours);
-  const error = useSelector((state) => state.reservations);
+  const { error } = useSelector((state) => state.reservations);
   const tours = data;
   const [selectedOption, setSelectedOption] = useState(tourId);
   const dispatch = useDispatch();
@@ -60,7 +60,7 @@ const ReservationForm = ({ tourId = null }) => {
 
   return (
     <form onSubmit={handleSubmit} className="auth_form">
-      <h4 className="text-lg mb-4 font-bold text-center">
+      <h4 className="text-lg mb-5 font-bold text-center">
         User:
         {' '}
         <span className="text-white">
