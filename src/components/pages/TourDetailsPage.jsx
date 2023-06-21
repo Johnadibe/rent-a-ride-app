@@ -88,10 +88,10 @@ const TourDetailsPage = () => {
         </div>
       )}
       <div
-        className="fixed text-[1.8rem]
-                            bottom-[2rem] left-[20rem] z-10 bg-[#98bd2a] text-white
+        className="fixed text-[1.8rem] bottom-0
+                            md:bottom-[2rem] md:left-[20rem] z-10 bg-[#98bd2a] text-white
                             rounded-full p-3 cursor-pointer
-                            hidden md:block
+                            md:block
                             "
         onClick={() => navigate(-1)}
       >
