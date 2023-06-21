@@ -100,6 +100,7 @@ code {
   .layout {
     grid-template-columns: 1fr;
   }
+
   .get_username {
     margin-left: 65px;
   }
