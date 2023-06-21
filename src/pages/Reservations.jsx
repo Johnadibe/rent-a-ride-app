@@ -32,7 +32,7 @@ const Reservations = () => {
         {' '}
       </h2>
       <div className="flex flex-wrap flex-col sm:flex-row gap-4 justify-center items-center w-full">
-        {data.length === 0
+        {data.length > 0
           ? (
             data.map((reservation) => (
               <div
