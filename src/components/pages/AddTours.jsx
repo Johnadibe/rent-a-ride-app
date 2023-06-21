@@ -1,4 +1,5 @@
 /* eslint-disable no-alert */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useRef } from 'react';
 // import { timeout } from 'q';
 // import { time } from 'console';
@@ -66,32 +67,84 @@ const AddTours = () => {
     alertContent = null;
   }
   return (
-    <div className="w-full h-screen ">
+    <div className="flex flex-col items-center justify-center">
       {alertContent}
-      <form onSubmit={handleSubmit} className="flex flex-col justify-evenly items-center w-full h-72">
-        <h3 className="text-3xl text-center font-bold">Add Tours</h3>
-        <div className="flex flex-col justify-between h-3/6">
-          <div className="m-1 p-1 rounded-full max-w-sm bg-gradient-to-r from-gray-400 via-white to-gray-500">
-            <input value={name} className="p-3 w-full rounded-xl focus:outline-none" type="text" name="name" id="name" onChange={(e) => setName(e.target.value)} placeholder="Write tour name" required />
+      <form onSubmit={handleSubmit} className="w-full max-w-lg">
+        <h3 className="text-3xl text-center font-bold mt-[35px]">Add Tours</h3>
+        <div className="flex flex-wrap -mx-3 mb-2">
+          <div className="w-[95%] px-3 m-auto">
+            <label
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              htmlFor="name"
+            >
+              Name
+            </label>
+            <input value={name} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" name="name" id="name" onChange={(e) => setName(e.target.value)} placeholder="Write tour name" required />
           </div>
-          <div className="m-1 p-1 rounded-full max-w-sm bg-gradient-to-r from-gray-400 via-white to-gray-500">
-            <input value={city} className="p-2 w-full rounded-xl focus:outline-none" type="text" name="city" id="city" onChange={(e) => setCity(e.target.value)} placeholder="Write tour city name" required />
+        </div>
+        <div className="flex flex-wrap -mx-3 mb-2">
+          <div className="w-[95%] px-3 m-auto">
+            <label
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              htmlFor="city"
+            >
+              City
+            </label>
+            <input value={city} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" name="city" id="city" onChange={(e) => setCity(e.target.value)} placeholder="Write tour city name" required />
           </div>
-          <div className="m-1 p-1 rounded-full max-w-sm bg-gradient-to-r from-gray-400 via-white to-gray-500">
-            <input value={price} className="p-2 w-full rounded-xl focus:outline-none" type="number" name="price" id="price" onChange={(e) => setPrice(e.target.value)} placeholder="Write tour Price" required />
+        </div>
+        <div className="flex flex-wrap -mx-3 mb-2">
+          <div className="w-[95%] px-3 m-auto">
+            <label
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              htmlFor="price"
+            >
+              Price
+            </label>
+            <input value={price} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="number" name="price" id="price" onChange={(e) => setPrice(e.target.value)} placeholder="Write tour Price" required />
           </div>
-          <div className="m-1 p-1 rounded-full max-w-sm bg-gradient-to-r from-gray-400 via-white to-gray-500">
-            <input value={video} className="p-2 w-full rounded-xl focus:outline-none" type="text" name="video" id="video" onChange={(e) => setVideo(e.target.value)} placeholder="Add video of tour" />
+        </div>
+        <div className="flex flex-wrap -mx-3 mb-2">
+          <div className="w-[95%] px-3 m-auto">
+            <label
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              htmlFor="video"
+            >
+              Video
+            </label>
+            <input value={video} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" name="video" id="video" onChange={(e) => setVideo(e.target.value)} placeholder="Add video of tour" />
           </div>
-          <div className="mt-2 mb-2">
-            <h4 className="font-semibold">Add Image</h4>
-            <input ref={fileInputRef} type="file" name="image" id="image" onChange={(e) => setImage(e.target.files[0])} required />
+        </div>
+        <div className="flex flex-wrap -mx-3 mb-2">
+          <div className="w-[95%] px-3 m-auto">
+            <label
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              htmlFor="image"
+            >
+              Add Image
+            </label>
+            <input ref={fileInputRef} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="file" name="image" id="image" onChange={(e) => setImage(e.target.files[0])} required />
           </div>
-          <div className="m-1 p-1 rounded-full max-w-sm bg-gradient-to-r from-gray-400 via-white to-gray-500">
-            <textarea value={des} className="p-2 w-full rounded-xl focus:outline-none" type="text" name="des" id="des" onChange={(e) => setDes(e.target.value)} placeholder="Write a description of tour" required />
+        </div>
+        <div className="flex flex-wrap -mx-3 mb-2">
+          <div className="w-[95%] px-3 m-auto">
+            <label
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              htmlFor="description"
+            >
+              Description
+            </label>
+            <textarea value={des} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight  resize-none focus:outline-none focus:bg-white" type="text" name="des" id="des" onChange={(e) => setDes(e.target.value)} placeholder="Write a description of tour" required />
           </div>
-          <div className="w-full flex justify-center">
-            <button type="submit" className="w-52 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Submit Tour</button>
+        </div>
+        <div className="flex flex-wrap -mx-3 mb-2">
+          <div className="w-[95%] md:w-1/3 px-3 mb-6 md:mb-0 m-auto md:">
+            <button
+              className="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+              type="submit"
+            >
+              Add Tour
+            </button>
           </div>
         </div>
       </form>
