@@ -95,3 +95,12 @@ code {
   color: rgb(237, 222, 222);
   font-size: 2rem;
 }
+
+@media (max-width: 767px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .get_username {
+    margin-left: 65px;
+  }
+}
