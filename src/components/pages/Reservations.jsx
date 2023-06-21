@@ -1,5 +1,3 @@
-/* eslint-disable no-alert */
-/* eslint-disable import/extensions */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteReservation, fetchReservations } from '../../redux/reservations';
