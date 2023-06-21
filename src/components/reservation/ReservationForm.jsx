@@ -1,14 +1,14 @@
 // ReservationForm.js
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { createReservation } from 'redux/reservation/reservationsSlice';
 import { getUser } from 'util/auth';
-
 
 const ReservationForm = ({ tour_id }) => {
   const [startDate, setstartDate] = useState('');
   const [endDate, setendDate] = useState('');
   const dispatch = useDispatch();
-  const username = getUser ? getUser.name : "NULL"
+  const username = getUser ? getUser.name : 'NULL';
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,13 +29,13 @@ const ReservationForm = ({ tour_id }) => {
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        id='name'
+        id="name"
         placeholder="Name"
         value={username}
         className="form_input"
         readOnly
       />
-       <input
+      <input
         type="text"
         placeholder="Start Date"
         value={startDate}
