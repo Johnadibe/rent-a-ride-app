@@ -13,7 +13,9 @@ export const getToken = localStorage.getItem(TOKENKEY)
   ? JSON.parse(localStorage.getItem(TOKENKEY))
   : null;
 
-export const getUser = localStorage.getItem(USERKEY);
+export const getUser = localStorage.getItem(USERKEY)
+  ? JSON.parse(localStorage.getItem(USERKEY))
+  : null;
 
 export const storeSession = (data) => {
   setUser(data.user);
