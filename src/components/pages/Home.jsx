@@ -55,7 +55,7 @@ const Home = () => {
           : <h4 className="md:ml-12 font-bold text-lg">{getUser.name}</h4>}
         <Log />
       </div>
-      <div className="flex flex-col md:justify-evenly h-full">
+      <div className="flex flex-col md:justify-evenly justify-around h-full">
         <div className="flex flex-col align-middle text-center">
           <h2 className="text-2xl font-extrabold">LATEST PLACE</h2>
           <h5 className="text-base md:text-xl text-bGrey">Please Select where you want to visit</h5>
