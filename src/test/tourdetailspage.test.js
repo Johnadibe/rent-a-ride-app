@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 
 import store from 'redux/store';
 
-import TourDetailsPage from '../components/pages/Home';
+import TourDetailsPage from 'pages/Home';
 
 describe('Tests Tour Details component', () => {
   it('Should render Tour Details Page Component', () => {

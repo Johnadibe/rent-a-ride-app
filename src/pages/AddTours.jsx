@@ -1,9 +1,10 @@
 /* eslint-disable no-alert */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useRef } from 'react';
-import { getToken } from '../../util/auth';
+import { getToken } from 'util/auth';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
-let errorState;
 const AddTours = () => {
   const [name, setName] = useState('');
   const [city, setCity] = useState('');
@@ -11,6 +12,7 @@ const AddTours = () => {
   const [video, setVideo] = useState('');
   const [image, setImage] = useState(null);
   const [des, setDes] = useState('');
+  const navigate = useNavigate();
   const fileInputRef = useRef(null);
 
   const handleReset = () => {
@@ -34,39 +36,26 @@ const AddTours = () => {
         Authorization: `Bearer ${getToken}`,
       },
     });
+
     const data = await response.json();
     if (data.error) {
-      errorState = true;
+      toast.error('Oops something went wrong. Please try again');
     } else {
-      errorState = false;
+      toast.success('Great! Tour Added successfully');
+
       setName('');
       setCity('');
       setPrice(0);
       setVideo('');
       setDes('');
       handleReset();
+      navigate('/');
     }
   };
-  let alertContent;
 
-  if (errorState === true) {
-    alertContent = (
-      <div className="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
-        <p>Tours were not added.</p>
-      </div>
-    );
-  } else if (errorState === false) {
-    alertContent = (
-      <div className="border border-t-0 border-green-400 rounded-b bg-green-100 px-4 py-3 text-green-700">
-        <p>Great! You added a tour.</p>
-      </div>
-    );
-  } else {
-    alertContent = null;
-  }
   return (
     <div className="flex flex-col items-center justify-center">
-      {alertContent}
+
       <form onSubmit={handleSubmit} className="w-full max-w-lg">
         <h3 className="text-3xl text-center font-bold mt-[35px]">Add Tours</h3>
         <div className="flex flex-wrap -mx-3 mb-2">

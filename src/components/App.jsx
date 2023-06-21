@@ -1,14 +1,14 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import ProtectedRoute from './ProtectedRoute';
+import PageNotFound from 'pages/PageNotFound';
+import Home from 'pages/Home';
+import Login from 'pages/Login';
+import SignUp from 'pages/SignUp';
+import TourDetailsPage from 'pages/TourDetailsPage';
+import DeleteTourPage from 'pages/DeleteTourPage';
+import AddTours from 'pages/AddTours';
+import AddReservation from 'pages/AddReservation';
 import Layout from './Layout';
-import PageNotFound from './pages/PageNotFound';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import SignUp from './pages/SignUp';
-import TourDetailsPage from './pages/TourDetailsPage';
-import DeleteTourPage from './pages/DeleteTourPage';
-import AddTours from './pages/AddTours';
-import AddReservation from './pages/AddReservation';
+import ProtectedRoute from './ProtectedRoute';
 
 function App() {
   return (

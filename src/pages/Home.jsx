@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { BiRightArrow, BiLeftArrow } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTours } from '../../redux/tours/tours';
-import { getUser } from '../../util/auth';
-import Log from '../Lognin/out/log';
+import { fetchTours } from 'redux/tours/tours';
+import { getUser } from 'util/auth';
+import Log from 'components/Lognin/out/log';
 
 // eslint-disable-next-line consistent-return
 const Home = () => {
@@ -70,7 +70,7 @@ const Home = () => {
               type="button"
               onClick={handlePrev}
               disabled={currentPage === 1}
-              className="button-pre py-2 px-4 bg-lime-500 text-white hover:bg-lime-400 font-bold hidden md:block"
+              className="button-pre py-3 px-4 bg-primary text-white hover:bg-lime-400 font-bold hidden md:block"
             >
               <span><BiLeftArrow /></span>
             </button>
@@ -81,15 +81,18 @@ const Home = () => {
                 <div key={item.id} id={item.id} className="card-main shadow-md hover:scale-105 transition-transform duration-300">
                   <NavLink to={`/tour/${item.id}`}>
                     <img src={`http://localhost:3000${item.image_url}`} alt={item.name} />
-                    <div className="leading-4">
-                      <h3 className="font-bold text-2xl space-y-1">{decodeURIComponent(item.name)}</h3>
+                    <div className="leading-4 p-3">
+                      <h3 className="font-bold text-xl space-y-3 ">{decodeURIComponent(item.name)}</h3>
+                      <p className="Des  py-2 text-gray-500 leading-snug">{sliceParagraph(decodeURIComponent(item.des), 10)}</p>
                       <p className="text-base text-center font-[18px]">
-                        Price:
+                        From:
                         {' '}
-                        $
-                        {item.price}
+                        <span className="font-bold">
+                          {' '}
+                          $
+                          {item.price}
+                        </span>
                       </p>
-                      <p className="Des text-sm md:text-lg text-gray-500">{sliceParagraph(decodeURIComponent(item.des), 10)}</p>
                     </div>
                   </NavLink>
                 </div>
@@ -101,7 +104,7 @@ const Home = () => {
               type="button"
               onClick={handleNext}
               disabled={currentPage === totalPages}
-              className="bg-lime-500 text-white hover:bg-lime-400 font-bold py-2 px-4 button-next hidden md:block"
+              className="bg-primary text-white hover:bg-lime-400 font-bold py-3 px-4 button-next hidden md:block"
             >
               <span className="text-xl"><BiRightArrow /></span>
             </button>

@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer';
 
 import { BrowserRouter } from 'react-router-dom';
 
-import Login from '../components/pages/Login';
+import Login from 'pages/Login';
 
 describe('Tests Login component', () => {
   it('Should render Navbar Component', () => {

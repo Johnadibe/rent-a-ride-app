@@ -2,7 +2,7 @@ import renderer from 'react-test-renderer';
 
 import { BrowserRouter } from 'react-router-dom';
 
-import MediaLinks from '../components/Navbar/MediaLinks';
+import MediaLinks from 'components/Navbar/MediaLinks';
 
 describe('Tests Navbar component', () => {
   it('Should render Medialinks Component', () => {

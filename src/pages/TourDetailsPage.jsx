@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate, NavLink } from 'react-router-dom';
 import { BiRightArrow, BiLeftArrow } from 'react-icons/bi';
 import { SlSettings } from 'react-icons/sl';
-import Loader from '../Loader/Loader';
-import { fetchTours } from '../../redux/tours/tours';
+import Loader from 'components/Loader/Loader';
+import { fetchTours } from 'redux/tours/tours';
 
 const TourDetailsPage = () => {
   const { id } = useParams();

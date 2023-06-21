@@ -7,11 +7,10 @@ import { getUser } from 'util/auth';
 import { fetchTours } from 'redux/tours/tours';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import 'react-toastify/dist/ReactToastify.css';
 
 const ReservationForm = ({ tourId = null }) => {
   const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const [endDate, setEndDate] = useState(tourId);
   const { data } = useSelector((state) => state.tours);
   const error = useSelector((state) => state.reservations);
   const tours = data;
@@ -24,6 +23,9 @@ const ReservationForm = ({ tourId = null }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const currentDate = new Date();
+    const selectedDateObj = new Date(startDate);
+    const endDateObj = new Date(endDate);
 
     const reservation = {
       start_date: startDate,
@@ -33,14 +35,17 @@ const ReservationForm = ({ tourId = null }) => {
 
     if (!startDate || !endDate) {
       setErrorMsg('Start and end date are required');
+    } else if (!selectedOption) {
+      setErrorMsg('Please select a tour');
+    } else if (currentDate > selectedDateObj || currentDate > endDateObj) {
+      setErrorMsg('reservation Date must start from tomorrow');
     } else {
       dispatch(createReservation({ reservation, navigate, toast }));
+      setStartDate('');
+      setEndDate('');
+      setSelectedOption('');
+      setErrorMsg('');
     }
-
-    // setStartDate('');
-    // setEndDate('');
-    // setSelectedOption('');
-    // setErrorMsg("")
   };
 
   useEffect(() => {
@@ -83,6 +88,7 @@ const ReservationForm = ({ tourId = null }) => {
 
         <label className="w-full text-white font-semibold " htmlFor="mySelect">Tour:</label>
         <select id="mySelect" className="reservation_input" value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)}>
+          <option value="">-- select tour -- </option>
           {
                 tours.map((data) => (
                   <option

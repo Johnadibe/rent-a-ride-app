@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchToursAll, deleteTour } from '../../redux/tours/tours';
+import { fetchToursAll, deleteTour } from 'redux/tours/tours';
 
 const DeleteTourPage = () => {
   const tourList = useSelector((state) => state.tours);
@@ -45,7 +45,7 @@ const DeleteTourPage = () => {
               </h2>
 
               <div className="flex flex-col justify-center mb-[1rem]">
-                {info.status && <span>Removed</span>}
+                {info.status && <span className="bg-primary text-white py-1 px-3 rounded-3xl">Removed</span>}
                 {!info.status && (
                 <button
                   type="button"
