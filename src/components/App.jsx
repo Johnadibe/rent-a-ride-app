@@ -19,7 +19,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/add-tour" element={<ProtectedRoute><AddTours /></ProtectedRoute>} />
           <Route path="/tour/:id" element={<TourDetailsPage />} />
-          <Route path="/delete-tour" element={<DeleteTourPage />} />
+          <Route path="/delete-tour" element={<ProtectedRoute><DeleteTourPage /></ProtectedRoute>} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
