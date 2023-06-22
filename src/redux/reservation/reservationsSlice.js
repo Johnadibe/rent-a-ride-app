@@ -41,7 +41,7 @@ export const createReservation = createAsyncThunk(
       if (response.ok) {
         const data = await response.json();
         toast.success('Tour Booked Successfully');
-        navigate('/');
+        navigate('/reservations');
         return data;
       }
       return toast.error('Oops Something went wrong. Try again!');

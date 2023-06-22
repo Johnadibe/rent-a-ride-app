@@ -1,29 +1,15 @@
+import ReservationCard from 'components/reservation/ReservationCard';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchReservations } from 'redux/reservation/reservationsSlice';
 
 const Reservations = () => {
   const dispatch = useDispatch();
-  const reservations = useSelector((state) => state.reservations);
-  const { data } = reservations;
-
-  const cancelReservation = (start) => {
-    const today = new Date();
-    const startDate = new Date(start);
-    return (today < startDate) ? (
-      <button
-        type="button"
-        className="bg-red-600 hover:bg-red-700 text-white font-bold py-1 px-4 rounded-full mt-2"
-        onClick={() => null}
-      >
-        Cancel Reservation
-      </button>
-    ) : '';
-  };
+  const { data } = useSelector((state) => state.reservations);
 
   useEffect(() => {
     dispatch(fetchReservations());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="flex justify-center flex-col items-center p-4">
@@ -32,41 +18,9 @@ const Reservations = () => {
         {' '}
       </h2>
       <div className="flex flex-wrap flex-col sm:flex-row gap-4 justify-center items-center w-full">
-        {data.length !== 0
+        {data.length > 0
           ? (
-            data.map((reservation) => (
-              <div
-                className="bg-white rounded-lg shadow-lg flex flex-col overflow-hidden"
-                key={reservation.id}
-              >
-                <div className="p-6 flex-grow flex flex-col justify-between">
-                  <div>
-
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-gray-700 font-bold">Tour: &nbsp;</span>
-                      <span className="text-gray-700">{reservation.tour.name}</span>
-                    </div>
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-gray-700 font-bold">City:</span>
-                      <span className="text-gray-700">{reservation.tour.city}</span>
-                    </div>
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-gray-700 font-bold">Start Date:</span>
-                      <span className="text-gray-700">
-                        {reservation.start_date}
-                      </span>
-                    </div>
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-gray-700 font-bold">End Date:</span>
-                      <span className="text-gray-700">{reservation.end_date}</span>
-                    </div>
-                  </div>
-                  <div className="flex justify-end">
-                    {cancelReservation(reservation.start_date)}
-                  </div>
-                </div>
-              </div>
-            ))
+            data.map((reservation) => (<ReservationCard key={reservation.id} data={reservation} />))
           )
           : (
             <p className="text-lg font-bold text-gray-800 text-center">
