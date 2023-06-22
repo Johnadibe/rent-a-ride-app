@@ -1,11 +1,11 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->
+  <h2><b>🕹️🕹️ Tour Reservation App 🕹️🕹️</b></h2>
   <br/>
-  <h3> 🚀 <b>Tour Reservation</b> 🚀</h3>
-
+  <img src="./src/Images/logo.png" alt="logo" width="140"  height="auto" />
 </div>
+<br/>
 
 # 📗 Table of Contents
 
@@ -17,6 +17,7 @@
   - [🚀 Live Demo](#live-demo)
   - [🚀 Kaban Board](#Kaban-Board)
     - [Kaban Board Initial State](#initial-state)
+  - [🚀 Project Screenshot](#project-screenshot)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
