@@ -66,6 +66,13 @@ The backend was made with ruby on rails and can be found [here](https://github.c
 ### Kaban Board Initial State <a name="initial-state"></a>
 - [Kaban Board Initial State](https://github.com/Johnadibe/tour-reservation-app-api/issues/23) This is the link to the project management tool used to track the progress of the project.
 
+In this team, we are 4 in number,
+
+- @Johnadibe
+- @mrprotocoll
+- @Hassaanjbaig-code
+- @Donmark2k
+
 ## Project Screenshots
 
 
