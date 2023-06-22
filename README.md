@@ -113,15 +113,13 @@ Run the server using the following command:
 ```sh
   npm start
 ```
+
 ### Run tests
-Run this command to fix some CSS linters error
+Run this command to run test
 ```sh
-  npx stylelint "**/*.{css,scss}" --fix
-``` 
-Run this command to fix some JavaScript linters error
-```sh
-  npx eslint . --fix
+  npm test
 ```
+
 ## 👥 Authors <a name="authors"></a>
 
 👤 **Chukwuemeka Ochuba**

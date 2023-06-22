@@ -1,4 +1,3 @@
-// ReservationForm.js
 import React, { useEffect, useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,7 +18,6 @@ const ReservationForm = ({ tourId = null }) => {
   const navigate = useNavigate();
   const [errorMsg, setErrorMsg] = useState(error);
   const [user, setUser] = useState(getUser);
-  // const [email, setEmail] = useState(getUser.email ?? null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,9 +48,7 @@ const ReservationForm = ({ tourId = null }) => {
 
   useEffect(() => {
     dispatch(fetchTours());
-    // const user = JSON.parse(localStorage.getItem(USERKEY)) ?? null
     setUser(JSON.parse(localStorage.getItem(USERKEY)) ?? null);
-    // setEmail(user.email);
   }, [dispatch]);
 
   useEffect(() => {
@@ -63,15 +59,6 @@ const ReservationForm = ({ tourId = null }) => {
 
   return (
     <form onSubmit={handleSubmit} className="auth_form">
-      {/* <h4 className="text-lg mb-5 font-bold text-center">
-        User:
-        {' '}
-        <span className="text-white">
-          {username}
-          {' | '}
-          {email}
-        </span>
-      </h4> */}
 
       {errorMsg && <div className="bg-red-300 p-4">{errorMsg}</div>}
 
