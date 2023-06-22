@@ -15,6 +15,7 @@
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
   - [🚀 Live Demo](#live-demo)
+  - [🚀 Kaban Board](#Kaban-Board)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -57,6 +58,9 @@ The backend was made with ruby on rails and can be found [here](https://github.c
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 - It will updated when available
+
+## 🚀 Kaban Board <a name="Kaban-Board"></a>
+- [Kaban Board](https://github.com/users/Johnadibe/projects/4) This is the link to the project management tool used to track the progress of the project.
 
 ## Project Screenshots
 
