@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchToursAll, deleteTour } from 'redux/tours/tours';
+import { getUser } from 'util/auth';
 
 const DeleteTourPage = () => {
   const tourList = useSelector((state) => state.tours);
@@ -46,7 +47,7 @@ const DeleteTourPage = () => {
 
               <div className="flex flex-col justify-center mb-[1rem]">
                 {info.status && <span className="bg-primary text-white py-1 px-3 rounded-3xl">Removed</span>}
-                {!info.status && (
+                {!info.status && info.user_id === getUser.id && (
                 <button
                   type="button"
                   className="bg-[red] text-[#fff] px-4 py-2 rounded-lg"
