@@ -73,9 +73,6 @@ In this team, we are 4 in number,
 - @Hassaanjbaig-code
 - @Donmark2k
 
-## Project Screenshots
-
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 💻 Getting Started <a name="getting-started"></a>
