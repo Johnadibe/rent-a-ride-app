@@ -1,11 +1,11 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->
+  <h2><b>🕹️🕹️ Tour Reservation App 🕹️🕹️</b></h2>
   <br/>
-  <h3> 🚀 <b>Tour Reservation</b> 🚀</h3>
-
+  <img src="./src/Images/logo.png" alt="logo" width="140"  height="auto" />
 </div>
+<br/>
 
 # 📗 Table of Contents
 
@@ -17,6 +17,7 @@
   - [🚀 Live Demo](#live-demo)
   - [🚀 Kaban Board](#Kaban-Board)
     - [Kaban Board Initial State](#initial-state)
+  - [🚀 Project Screenshot](#project-screenshot)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -55,10 +56,15 @@ The backend was made with ruby on rails and can be found [here](https://github.c
   <li>Booking and Reservation Management</li>
   <li>Secure Payment Processing</li>
   
-<p align="right">(<a href="#readme-top">back to top</a>)</p><!-- LIVE DEMO -->
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LIVE DEMO -->
 
 ## 🚀 Live Demo <a name="live-demo"></a>
+
 - It will updated when available
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🚀 Kaban Board <a name="Kaban-Board"></a>
 - [Kaban Board](https://github.com/users/Johnadibe/projects/4) This is the link to the project management tool used to track the progress of the project.
@@ -72,6 +78,19 @@ In this team, we are 4 in number,
 - @mrprotocoll
 - @Hassaanjbaig-code
 - @Donmark2k
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- PROJECT SCREENSHOTS -->
+
+## 🚀 Project Screenshot <a name="project-screenshot"></a>
+
+![image](https://github.com/Johnadibe/tour-reservation-app-api/assets/43586022/ef8b7b59-e6bd-4bf4-9fd6-5f53e4a2ef92)
+
+
+![image](https://github.com/Johnadibe/tour-reservation-app-api/assets/43586022/7f995e50-dfbc-4e94-a6f6-52bd93562d0b)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -113,15 +132,13 @@ Run the server using the following command:
 ```sh
   npm start
 ```
+
 ### Run tests
-Run this command to fix some CSS linters error
+Run this command to run test
 ```sh
-  npx stylelint "**/*.{css,scss}" --fix
-``` 
-Run this command to fix some JavaScript linters error
-```sh
-  npx eslint . --fix
+  npm test
 ```
+
 ## 👥 Authors <a name="authors"></a>
 
 👤 **Chukwuemeka Ochuba**
