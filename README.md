@@ -2,9 +2,8 @@
 
 <div align="center">
   <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->
-  <img src="https://cdn.icon-icons.com/icons2/3184/PNG/512/crypto_currency_icon_194090.png" alt="logo" width="140"  height="auto" />
   <br/>
-  <h3> 🚀 <b>Tour Registration</b> 🚀</h3>
+  <h3> 🚀 <b>Tour Reservation</b> 🚀</h3>
 
 </div>
 
