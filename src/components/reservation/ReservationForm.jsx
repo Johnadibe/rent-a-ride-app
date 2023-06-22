@@ -50,7 +50,7 @@ const ReservationForm = ({ tourId = null }) => {
 
   useEffect(() => {
     dispatch(fetchTours());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (error) {

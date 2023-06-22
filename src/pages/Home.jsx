@@ -82,8 +82,8 @@ const Home = () => {
                   <NavLink to={`/tour/${item.id}`}>
                     <img src={`http://localhost:3000${item.image_url}`} alt={item.name} />
                     <div className="leading-4 p-3">
-                      <h3 className="font-bold text-xl space-y-3 ">{decodeURIComponent(item.name)}</h3>
-                      <p className="Des  py-2 text-gray-500 leading-snug">{sliceParagraph(decodeURIComponent(item.des), 10)}</p>
+                      <h3 className="font-bold text-xl space-y-3 ">{item.name}</h3>
+                      <p className="Des  py-2 text-gray-500 leading-snug">{sliceParagraph(item.des, 10)}</p>
                       <p className="text-base text-center font-[18px]">
                         From:
                         {' '}

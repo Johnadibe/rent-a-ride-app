@@ -18,6 +18,7 @@ export const fetchToursAll = createAsyncThunk('tours/fetchToursAll', async () =>
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${getToken}`,
     },
   });
   const data = await response.json();
@@ -43,6 +44,7 @@ const ToursSlice = createSlice({
   name: 'tours',
   initialState: {
     data: [],
+    myTours: [],
   },
   reducers: {},
   extraReducers(builder) {
@@ -54,13 +56,13 @@ const ToursSlice = createSlice({
 
       .addCase(fetchToursAll.fulfilled, (state, action) => ({
         ...state,
-        data: action.payload,
+        myTours: action.payload,
       }))
 
       .addCase(deleteTour.fulfilled, (state, action) => {
         const deletedTourId = action.payload;
         // Update the status of the deleted tour in the Redux store
-        state.data = state.data.map((tour) => {
+        state.myTours = state.myTours.map((tour) => {
           if (tour.id === deletedTourId) {
             return {
               ...tour,

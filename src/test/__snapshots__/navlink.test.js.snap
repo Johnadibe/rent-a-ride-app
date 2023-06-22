@@ -43,6 +43,17 @@ exports[`Tests Navbar component Should render Navbar Component 1`] = `
   >
     <a
       className=""
+      href="/add-reservation"
+      onClick={[Function]}
+    >
+      ADD RESERVATION
+    </a>
+  </li>
+  <li
+    className="pl-4 py-2 hover:bg-lGreen hover:text-white"
+  >
+    <a
+      className=""
       href="/delete-tour"
       onClick={[Function]}
     >
