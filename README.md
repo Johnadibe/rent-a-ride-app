@@ -55,10 +55,15 @@ The backend was made with ruby on rails and can be found [here](https://github.c
   <li>Booking and Reservation Management</li>
   <li>Secure Payment Processing</li>
   
-<p align="right">(<a href="#readme-top">back to top</a>)</p><!-- LIVE DEMO -->
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LIVE DEMO -->
 
 ## 🚀 Live Demo <a name="live-demo"></a>
+
 - It will updated when available
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🚀 Kaban Board <a name="Kaban-Board"></a>
 - [Kaban Board](https://github.com/users/Johnadibe/projects/4) This is the link to the project management tool used to track the progress of the project.
@@ -72,6 +77,19 @@ In this team, we are 4 in number,
 - @mrprotocoll
 - @Hassaanjbaig-code
 - @Donmark2k
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- PROJECT SCREENSHOTS -->
+
+## 🚀 Project Screenshot <a name="project-screenshot"></a>
+
+![image](https://github.com/Johnadibe/tour-reservation-app-api/assets/43586022/ef8b7b59-e6bd-4bf4-9fd6-5f53e4a2ef92)
+
+
+![image](https://github.com/Johnadibe/tour-reservation-app-api/assets/43586022/7f995e50-dfbc-4e94-a6f6-52bd93562d0b)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

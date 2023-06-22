@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { createReservation } from 'redux/reservation/reservationsSlice';
-import { USERKEY, getUser } from 'util/auth';
+import { USERKEY } from 'util/auth';
 import { fetchTours } from 'redux/tours/tours';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
@@ -17,7 +17,7 @@ const ReservationForm = ({ tourId = null }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [errorMsg, setErrorMsg] = useState(error);
-  const [user, setUser] = useState(getUser);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem(USERKEY)) ?? null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
