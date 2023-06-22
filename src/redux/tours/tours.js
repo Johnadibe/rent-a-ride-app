@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getToken } from 'util/auth';
+import { TOKENKEY } from 'util/auth';
 
 export const fetchTours = createAsyncThunk('tours/fetchTours', async () => {
   const response = await fetch(`${process.env.REACT_APP_API_URL}/tours`, {
@@ -18,7 +18,7 @@ export const fetchToursAll = createAsyncThunk('tours/fetchToursAll', async () =>
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${getToken}`,
+      Authorization: `Bearer ${JSON.parse(localStorage.getItem(TOKENKEY)) ?? null}`,
     },
   });
   const data = await response.json();
@@ -33,7 +33,7 @@ export const deleteTour = createAsyncThunk(
       body: JSON.stringify({ status: true }),
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${getToken}`,
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem(TOKENKEY)) ?? null}`,
       },
     });
     return tourId;
@@ -54,10 +54,9 @@ const ToursSlice = createSlice({
         state.data = newArr;
       })
 
-      .addCase(fetchToursAll.fulfilled, (state, action) => ({
-        ...state,
-        myTours: action.payload,
-      }))
+      .addCase(fetchToursAll.fulfilled, (state, action) => {
+        state.myTours = action.payload;
+      })
 
       .addCase(deleteTour.fulfilled, (state, action) => {
         const deletedTourId = action.payload;

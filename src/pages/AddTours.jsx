@@ -1,7 +1,7 @@
 /* eslint-disable no-alert */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useRef } from 'react';
-import { getToken } from 'util/auth';
+import { TOKENKEY } from 'util/auth';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
@@ -33,7 +33,7 @@ const AddTours = () => {
       method: 'POST',
       body: formData,
       headers: {
-        Authorization: `Bearer ${getToken}`,
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem(TOKENKEY)) ?? null}}`,
       },
     });
 

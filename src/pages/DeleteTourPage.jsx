@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchToursAll, deleteTour } from 'redux/tours/tours';
-import { getUser } from 'util/auth';
+// import { getUser } from 'util/auth';
 
 const DeleteTourPage = () => {
   const tourList = useSelector((state) => state.tours);

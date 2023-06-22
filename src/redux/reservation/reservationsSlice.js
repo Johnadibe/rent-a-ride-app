@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getToken } from 'util/auth';
+import { TOKENKEY } from 'util/auth';
 
 const initialState = {
   data: [],
@@ -11,7 +11,7 @@ export const fetchReservations = createAsyncThunk('reservations/fetchReservation
   try {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/reservations`, {
       headers: {
-        Authorization: `Bearer ${getToken}`,
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem(TOKENKEY)) ?? null}`,
       },
     });
     const data = await response.json();
@@ -32,7 +32,7 @@ export const createReservation = createAsyncThunk(
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${getToken}`,
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem(TOKENKEY)) ?? null}`,
           },
           body: JSON.stringify(reservation),
         },

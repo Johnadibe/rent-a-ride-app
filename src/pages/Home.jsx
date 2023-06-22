@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { BiRightArrow, BiLeftArrow } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTours } from 'redux/tours/tours';
-import { getUser } from 'util/auth';
+import { USERKEY, getUser } from 'util/auth';
 import Log from 'components/Lognin/out/log';
 
 // eslint-disable-next-line consistent-return
@@ -13,18 +13,20 @@ const Home = () => {
   const tourS = useSelector((state) => state.tours);
   const [cardsPerPage, setCardsPerPage] = useState(window.innerWidth < 768 ? 1 : 3);
   const { data } = tourS;
+  const [user, setUser] = useState(getUser);
   useEffect(() => {
     dispatch(fetchTours());
     const handleResize = () => {
       setCardsPerPage(window.innerWidth < 768 ? 1 : 3);
     };
 
+    setUser(JSON.parse(localStorage.getItem(USERKEY)) ?? null);
     window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [dispatch]);
 
   const totalPages = Math.ceil(data.length / cardsPerPage);
 
@@ -49,12 +51,12 @@ const Home = () => {
   return (
     <section className="h-screen flex flex-col bg-gray-200">
       <div className="w-full h-[5rem] bg-gray-100 flex justify-between items-center">
-        {getUser === null ? <h4 className="ml-12 font-bold text-lg">Welcome</h4>
+        {user === null ? <h4 className="ml-12 font-bold text-lg">Welcome</h4>
           : (
             <h4 className="get_username md:ml-12 font-bold text-lg">
               Hello,
               {' '}
-              {getUser.name}
+              {user.name}
             </h4>
           )}
         <Log />
