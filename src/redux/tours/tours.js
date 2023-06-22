@@ -14,7 +14,7 @@ export const fetchTours = createAsyncThunk('tours/fetchTours', async () => {
 });
 
 export const fetchToursAll = createAsyncThunk('tours/fetchToursAll', async () => {
-  const response = await fetch(`${process.env.REACT_APP_API_URL}/tours-all`, {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/my-tours`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
