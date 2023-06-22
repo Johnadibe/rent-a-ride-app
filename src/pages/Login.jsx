@@ -29,7 +29,7 @@ const Login = () => {
       if (data.error) {
         setError(data.error);
       } else {
-        storeSession(data);
+        storeSession(data.user, data.token);
 
         setEmail('');
         setPassword('');

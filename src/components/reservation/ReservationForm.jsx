@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { createReservation } from 'redux/reservation/reservationsSlice';
-import { getUser } from 'util/auth';
+import { USERKEY, getUser } from 'util/auth';
 import { fetchTours } from 'redux/tours/tours';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
@@ -12,14 +12,14 @@ const ReservationForm = ({ tourId = null }) => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState(tourId);
   const { data } = useSelector((state) => state.tours);
-  const error = useSelector((state) => state.reservations);
+  const { error } = useSelector((state) => state.reservations);
   const tours = data;
   const [selectedOption, setSelectedOption] = useState(tourId);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [errorMsg, setErrorMsg] = useState(error);
-  const username = getUser ? getUser.name : 'NULL';
-  const email = getUser ? getUser.email : 'NULL';
+  const [user, setUser] = useState(getUser);
+  // const [email, setEmail] = useState(getUser.email ?? null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,7 +50,10 @@ const ReservationForm = ({ tourId = null }) => {
 
   useEffect(() => {
     dispatch(fetchTours());
-  }, []);
+    // const user = JSON.parse(localStorage.getItem(USERKEY)) ?? null
+    setUser(JSON.parse(localStorage.getItem(USERKEY)) ?? null);
+    // setEmail(user.email);
+  }, [dispatch]);
 
   useEffect(() => {
     if (error) {
@@ -60,7 +63,7 @@ const ReservationForm = ({ tourId = null }) => {
 
   return (
     <form onSubmit={handleSubmit} className="auth_form">
-      <h4 className="text-lg mb-4 font-bold text-center">
+      {/* <h4 className="text-lg mb-5 font-bold text-center">
         User:
         {' '}
         <span className="text-white">
@@ -68,7 +71,7 @@ const ReservationForm = ({ tourId = null }) => {
           {' | '}
           {email}
         </span>
-      </h4>
+      </h4> */}
 
       {errorMsg && <div className="bg-red-300 p-4">{errorMsg}</div>}
 
@@ -78,7 +81,7 @@ const ReservationForm = ({ tourId = null }) => {
           type="text"
           id="name"
           placeholder="Name"
-          value={username}
+          value={user.name}
           className="reservation_input"
           readOnly
         />

@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getToken } from 'util/auth';
+import { TOKENKEY } from 'util/auth';
 
 export const fetchTours = createAsyncThunk('tours/fetchTours', async () => {
   const response = await fetch(`${process.env.REACT_APP_API_URL}/tours`, {
@@ -14,10 +14,11 @@ export const fetchTours = createAsyncThunk('tours/fetchTours', async () => {
 });
 
 export const fetchToursAll = createAsyncThunk('tours/fetchToursAll', async () => {
-  const response = await fetch(`${process.env.REACT_APP_API_URL}/tours-all`, {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/my-tours`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${JSON.parse(localStorage.getItem(TOKENKEY)) ?? null}`,
     },
   });
   const data = await response.json();
@@ -32,7 +33,7 @@ export const deleteTour = createAsyncThunk(
       body: JSON.stringify({ status: true }),
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${getToken}`,
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem(TOKENKEY)) ?? null}`,
       },
     });
     return tourId;
@@ -43,6 +44,7 @@ const ToursSlice = createSlice({
   name: 'tours',
   initialState: {
     data: [],
+    myTours: [],
   },
   reducers: {},
   extraReducers(builder) {
@@ -52,15 +54,14 @@ const ToursSlice = createSlice({
         state.data = newArr;
       })
 
-      .addCase(fetchToursAll.fulfilled, (state, action) => ({
-        ...state,
-        data: action.payload,
-      }))
+      .addCase(fetchToursAll.fulfilled, (state, action) => {
+        state.myTours = action.payload;
+      })
 
       .addCase(deleteTour.fulfilled, (state, action) => {
         const deletedTourId = action.payload;
         // Update the status of the deleted tour in the Redux store
-        state.data = state.data.map((tour) => {
+        state.myTours = state.myTours.map((tour) => {
           if (tour.id === deletedTourId) {
             return {
               ...tour,

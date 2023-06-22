@@ -2,9 +2,8 @@
 
 <div align="center">
   <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->
-  <img src="https://cdn.icon-icons.com/icons2/3184/PNG/512/crypto_currency_icon_194090.png" alt="logo" width="140"  height="auto" />
   <br/>
-  <h3> 🚀 <b>Tour Registration</b> 🚀</h3>
+  <h3> 🚀 <b>Tour Reservation</b> 🚀</h3>
 
 </div>
 
@@ -16,6 +15,8 @@
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
   - [🚀 Live Demo](#live-demo)
+  - [🚀 Kaban Board](#Kaban-Board)
+    - [Kaban Board Initial State](#initial-state)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -59,8 +60,18 @@ The backend was made with ruby on rails and can be found [here](https://github.c
 ## 🚀 Live Demo <a name="live-demo"></a>
 - It will updated when available
 
-## Project Screenshots
+## 🚀 Kaban Board <a name="Kaban-Board"></a>
+- [Kaban Board](https://github.com/users/Johnadibe/projects/4) This is the link to the project management tool used to track the progress of the project.
 
+### Kaban Board Initial State <a name="initial-state"></a>
+- [Kaban Board Initial State](https://github.com/Johnadibe/tour-reservation-app-api/issues/23) This is the link to the project management tool used to track the progress of the project.
+
+In this team, we are 4 in number,
+
+- @Johnadibe
+- @mrprotocoll
+- @Hassaanjbaig-code
+- @Donmark2k
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

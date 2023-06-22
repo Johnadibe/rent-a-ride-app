@@ -30,7 +30,7 @@ const SignUp = () => {
       if (data.error) {
         setError(data.error);
       } else {
-        storeSession(data);
+        storeSession(data.data, data.token);
 
         setName('');
         setEmail('');

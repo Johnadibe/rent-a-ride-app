@@ -5,7 +5,7 @@ exports[`Tests Delete Tour component Should render Removed Tour from the Main Li
   className="h-screen flex flex-col bg-gray-200"
 >
   <div
-    className="w-full h-16 bg-gray-100 flex justify-between items-center"
+    className="w-full h-[5rem] bg-gray-100 flex justify-between items-center"
   >
     <h4
       className="ml-12 font-bold text-lg"
@@ -13,7 +13,7 @@ exports[`Tests Delete Tour component Should render Removed Tour from the Main Li
       Welcome
     </h4>
     <div
-      className="md:mr-12"
+      className="mr-4 md:mr-12"
     >
       <button
         className="relative inline-flex items-center justify-center p-0.5 mb-2 md:mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"

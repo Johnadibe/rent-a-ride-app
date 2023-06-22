@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getToken } from 'util/auth';
+import { TOKENKEY } from 'util/auth';
 
 const initialState = {
   data: [],
@@ -11,11 +11,11 @@ export const fetchReservations = createAsyncThunk('reservations/fetchReservation
   try {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/reservations`, {
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${getToken}`,
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem(TOKENKEY)) ?? null}`,
       },
     });
-    return response;
+    const data = await response.json();
+    return data;
   } catch (error) {
     return error;
   }
@@ -32,7 +32,7 @@ export const createReservation = createAsyncThunk(
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${getToken}`,
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem(TOKENKEY)) ?? null}`,
           },
           body: JSON.stringify(reservation),
         },
@@ -41,7 +41,7 @@ export const createReservation = createAsyncThunk(
       if (response.ok) {
         const data = await response.json();
         toast.success('Tour Booked Successfully');
-        navigate('/');
+        navigate('/reservations');
         return data;
       }
       return toast.error('Oops Something went wrong. Try again!');
@@ -51,38 +51,32 @@ export const createReservation = createAsyncThunk(
   },
 );
 
-export const reservationSlice = createSlice({
+const ReservationSlice = createSlice({
   name: 'reservations',
   initialState,
   reducers: {},
   extraReducers(builder) {
-    builder.addCase(fetchReservations.pending, (state) => ({
-      ...state,
-      status: 'loading',
-    }))
-      .addCase(fetchReservations.fulfilled, (state, action) => ({
-        ...state,
-        data: action.payload.map((reservation) => ({
-          start_end: reservation.start_end,
-          end_date: reservation.end_date,
-          id: reservation.id,
-        })),
-        status: 'loaded',
-      }))
+    builder
+      .addCase(fetchReservations.fulfilled, (state, action) => {
+        state.data = action.payload;
+      })
       .addCase(fetchReservations.rejected, (state, action) => ({
         ...state,
         status: 'failed',
-        error: [...state.error, action.error.message],
-      }));
-    // Handle the postReservation fulfilled action
-    builder.addCase(createReservation.fulfilled, (state, action) => {
-      state.push(action.payload);
-    })
+        error: action.payload.message,
+      }))
+      .addCase(createReservation.fulfilled, (state, action) => {
+        state.data.push(action.payload);
+      })
       .addCase(createReservation.rejected, (state, action) => {
         state.error = action.payload.error;
-      });
+      })
+      .addCase(fetchReservations.pending, (state) => ({
+        ...state,
+        status: 'loading',
+      }));
   },
 
 });
 
-export default reservationSlice.reducer;
+export default ReservationSlice.reducer;
