@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { storeSession } from 'util/auth';
 
 const Login = () => {
@@ -57,9 +57,9 @@ const Login = () => {
           <button className="outline_btn" type="submit">Login</button>
           <div className="alt">
             Don&apos;t have an account?&nbsp;
-            <a href="/signup" className="text-primary">
+            <Link to="/signup" className="text-primary">
               Sign up
-            </a>
+            </Link>
           </div>
         </div>
 

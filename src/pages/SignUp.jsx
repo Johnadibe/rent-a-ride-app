@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { storeSession } from 'util/auth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   const [name, setName] = useState('');
@@ -58,9 +58,9 @@ const SignUp = () => {
           <button className="outline_btn" type="submit">Sign Up</button>
           <div className="alt">
             Already have an account?&nbsp;
-            <a href="/login" className="text-primary">
+            <Link href="/login" className="text-primary">
               Login
-            </a>
+            </Link>
           </div>
         </div>
       </form>
