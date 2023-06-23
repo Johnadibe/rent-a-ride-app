@@ -21,7 +21,7 @@ const NavLinks = ({ toggleNavbar }) => {
     if (localStorage.getItem(TOKENKEY)) {
       setIsLoggedIn(true);
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, handleLogout]);
 
   return (
 
