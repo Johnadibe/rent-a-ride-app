@@ -33,7 +33,7 @@ const AddTours = () => {
       method: 'POST',
       body: formData,
       headers: {
-        Authorization: `Bearer ${JSON.parse(localStorage.getItem(TOKENKEY)) ?? null}}`,
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem(TOKENKEY)) ?? null}`,
       },
     });
 
