@@ -58,7 +58,7 @@ const SignUp = () => {
           <button className="outline_btn" type="submit">Sign Up</button>
           <div className="alt">
             Already have an account?&nbsp;
-            <Link href="/login" className="text-primary">
+            <Link to="/login" className="text-primary">
               Login
             </Link>
           </div>
