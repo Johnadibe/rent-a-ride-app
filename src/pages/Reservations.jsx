@@ -6,13 +6,13 @@ import { fetchReservations } from 'redux/reservation/reservationsSlice';
 
 const Reservations = () => {
   const dispatch = useDispatch();
-  const { data, loader } = useSelector((state) => state.reservations);
+  const { data, loading } = useSelector((state) => state.reservations);
 
   useEffect(() => {
     dispatch(fetchReservations());
   }, []);
 
-  return !loader
+  return loading
     ? <Loader />
     : (
       <div className="flex justify-center flex-col items-center p-4">
