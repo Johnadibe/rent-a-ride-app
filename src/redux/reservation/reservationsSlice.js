@@ -57,11 +57,16 @@ const ReservationSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
+      .addCase(fetchReservations.pending, (state) => {
+        state.loading = true;
+      })
       .addCase(fetchReservations.fulfilled, (state, action) => {
         state.data = action.payload;
+        state.loading = false;
       })
       .addCase(fetchReservations.rejected, (state, action) => {
         state.error = action.payload.message;
+        state.loading = false;
       })
       .addCase(createReservation.pending, (state) => {
         state.loading = true;
@@ -73,9 +78,6 @@ const ReservationSlice = createSlice({
       .addCase(createReservation.rejected, (state, action) => {
         state.error = action.payload.error;
         state.loading = false;
-      })
-      .addCase(fetchReservations.pending, (state) => {
-        state.loading = true;
       });
   },
 
