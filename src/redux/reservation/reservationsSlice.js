@@ -3,8 +3,8 @@ import { TOKENKEY } from 'util/auth';
 
 const initialState = {
   data: [],
-  status: 'idle',
   error: null,
+  loading: false,
 };
 
 export const fetchReservations = createAsyncThunk('reservations/fetchReservations', async () => {
@@ -60,21 +60,21 @@ const ReservationSlice = createSlice({
       .addCase(fetchReservations.fulfilled, (state, action) => {
         state.data = action.payload;
       })
-      .addCase(fetchReservations.rejected, (state, action) => ({
-        ...state,
-        status: 'failed',
-        error: action.payload.message,
-      }))
+      .addCase(fetchReservations.rejected, (state, action) => {
+        state.error = action.payload.message;
+      })
+      .addCase(createReservation.pending, (state) => {
+        state.loading = true;
+      })
       .addCase(createReservation.fulfilled, (state, action) => {
         state.data.push(action.payload);
       })
       .addCase(createReservation.rejected, (state, action) => {
         state.error = action.payload.error;
       })
-      .addCase(fetchReservations.pending, (state) => ({
-        ...state,
-        status: 'loading',
-      }));
+      .addCase(fetchReservations.pending, (state) => {
+        state.loading = true;
+      });
   },
 
 });
