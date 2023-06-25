@@ -6,7 +6,9 @@ const ReservationCardItem = ({ name, value }) => (
       {name}
       :
     </span>
-    <span className="text-gray-700">{value}</span>
+    <span className="text-gray-700">
+      {value}
+    </span>
   </div>
 );
 
