@@ -32,7 +32,7 @@
 
 # 🚀 Tour Reservation <a name="about-project"></a>
 
-<p> A tour reservation app is a software application designed to facilitate the process of booking and managing tour reservations. It allows users to browse available tours, select desired tour packages, specify booking details and receive confirmation for their reservations.</p>
+<p> A tour reservation app is a software application designed to facilitate the process of booking and managing tour reservations. It allows users to browse available tours, select desired tour packages, specify booking details, and receive confirmation for their reservations.</p>
 
 
 ## Backend
@@ -47,7 +47,7 @@ The backend was made with ruby on rails and can be found [here](https://github.c
 
 ### Tech Stack <a name="tech-stack"></a>
 
--  React, redux, axios, jest webpack and babel
+-  React, redux, axios, jest webpack, and babel
 
 ### Key Features <a name="key-features"></a>
 
@@ -62,7 +62,7 @@ The backend was made with ruby on rails and can be found [here](https://github.c
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- It will updated when available
+- It will be updated when available
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -96,7 +96,7 @@ In this team, we are 4 in number,
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
-To run on your localhost clone the project to local folder
+To run on your localhost clone the project to a local folder
 
 
 ### Prerequisites
@@ -106,7 +106,7 @@ In order to run this project you need:
 - [Visual Studio Code](https://code.visualstudio.com/): A source code editor
 - Have a working and updated browser
 - Have a local version control like git installed on your computer
-- A copy of the link of this Repository.
+- A copy of the link to this Repository.
 ```sh
  https://github.com/Johnadibe/tour-reservation.git
 ```
@@ -134,7 +134,7 @@ Run the server using the following command:
 ```
 
 ### Run tests
-Run this command to run test
+Run this command to run a test
 ```sh
   npm test
 ```
